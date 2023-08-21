@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "concurrently --names \"ROLLUP,SASS,HTTP\" -c \"bgBlue.bold,bgMagenta.bold,bgGreen.bold\" \"rollup -c -w -m inline\" \"sass src/scss:public/assets/css --watch\" \"servez public\"",
     "build": "rollup -c && sass src/scss:public/assets/css",
+    "generate": "npm run build && node ./routes && node ./render",
     "start": "servez public",
     "lint": "eslint src"
   },
