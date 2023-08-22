@@ -13,7 +13,7 @@ export class Figure {
     }
 
     render() {
-        const { indent, media, featuredImage, label, caption, mp4 } = this.sectionData;
+        const { indent, image, featuredImage, label, caption, mp4 } = this.sectionData;
 
         if (mp4) {
             this.nodeList = html(/* html */ `
@@ -25,10 +25,10 @@ export class Figure {
                     </figcaption>
                 </figure>
             `);
-        } else if (media) {
-            const image = data.get('assets').find(doc => doc._id === media.asset._ref).url;
-            const mobileImage = `${image}?h=600&fit=crop&crop=center&sharp=25&auto=format`;
-            const desktopImage = `${image}?h=1568&fit=min&auto=format`;
+        } else if (image) {
+            const url = data.get('assets').find(doc => doc._id === image.asset._ref).url;
+            const mobileImage = `${url}?h=600&fit=crop&crop=center&sharp=25&auto=format`;
+            const desktopImage = `${url}?h=1568&fit=min&auto=format`;
 
             this.nodeList = html(/* html */ `
                 <figure class="${indent ? 'indent' : ''}">
@@ -40,9 +40,9 @@ export class Figure {
                 </figure>
             `);
         } else if (featuredImage) {
-            const image = data.get('assets').find(doc => doc._id === featuredImage.image.asset._ref).url;
-            const mobileImage = `${image}?h=600&fit=crop&crop=center&sharp=25&auto=format`;
-            const desktopImage = `${image}?h=1568&fit=min&auto=format`;
+            const url = data.get('assets').find(doc => doc._id === featuredImage.image.asset._ref).url;
+            const mobileImage = `${url}?h=600&fit=crop&crop=center&sharp=25&auto=format`;
+            const desktopImage = `${url}?h=1568&fit=min&auto=format`;
 
             this.nodeList = html(/* html */ `
                 <figure>

@@ -7,12 +7,12 @@ export class Diptych {
 
         this.data = [
             {
-                media: this.sectionData.media1,
+                image: this.sectionData.image1,
                 label: this.sectionData.label1,
                 caption: this.sectionData.caption1
             },
             {
-                media: this.sectionData.media2,
+                image: this.sectionData.image2,
                 label: this.sectionData.label2,
                 caption: this.sectionData.caption2
             }
@@ -30,10 +30,10 @@ export class Diptych {
 
         this.nodeList = html(/* html */ `
             <figure class="diptych${indent ? ' indent' : ''}">
-                ${this.data.map(({ media, label, caption }) => {
-                    const image = data.get('assets').find(doc => doc._id === media.asset._ref).url;
-                    const mobileImage = `${image}?h=600&fit=crop&crop=center&sharp=25&auto=format`;
-                    const desktopImage = `${image}?h=1568&fit=min&auto=format`;
+                ${this.data.map(({ image, label, caption }) => {
+                    const url = data.get('assets').find(doc => doc._id === image.asset._ref).url;
+                    const mobileImage = `${url}?h=600&fit=crop&crop=center&sharp=25&auto=format`;
+                    const desktopImage = `${url}?h=1568&fit=min&auto=format`;
 
                     return /* html */ `
                         <div class="image">
