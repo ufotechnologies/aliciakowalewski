@@ -60,7 +60,7 @@ export default {
           fields: [
             {name: 'name', type: 'string', title: 'Name'},
             {name: 'indent', type: 'boolean', title: 'Indent', initialValue: true},
-            {name: 'image', type: 'file', title: 'Image'},
+            {name: 'image', type: 'image', title: 'Image'},
             {name: 'label', type: 'string', title: 'Label'},
             {name: 'caption', type: 'string', title: 'Caption'},
             {name: 'mp4', type: 'string', title: 'MP4 link'},
@@ -93,11 +93,11 @@ export default {
           fields: [
             {name: 'name', type: 'string', title: 'Name'},
             {name: 'indent', type: 'boolean', title: 'Indent', initialValue: true},
-            {name: 'image1', type: 'file', title: 'Image', fieldset: 'figure1'},
+            {name: 'image1', type: 'image', title: 'Image', fieldset: 'figure1'},
             {name: 'label1', type: 'string', title: 'Label', fieldset: 'figure1'},
             {name: 'caption1', type: 'string', title: 'Caption', fieldset: 'figure1'},
             {name: 'link1', type: 'string', title: 'Link', fieldset: 'figure1'},
-            {name: 'image2', type: 'file', title: 'Image', fieldset: 'figure2'},
+            {name: 'image2', type: 'image', title: 'Image', fieldset: 'figure2'},
             {name: 'label2', type: 'string', title: 'Label', fieldset: 'figure2'},
             {name: 'caption2', type: 'string', title: 'Caption', fieldset: 'figure2'},
             {name: 'link2', type: 'string', title: 'Link', fieldset: 'figure2'}
