@@ -27,7 +27,7 @@ export async function loadData() {
                 return;
             }
 
-            if (doc._type === 'sanity.fileAsset' || doc._type === 'sanity.imageAsset') {
+            if (doc._type === 'sanity.imageAsset') {
                 assets.push(doc);
                 return;
             }
