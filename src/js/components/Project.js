@@ -26,7 +26,7 @@ export class Project {
 
         this.nodeList = html(/* html */ `
             <figure>
-                <a href="${basePath}/projects/${slug.current}"><img srcset="${mobileImage} 750w, ${desktopImage} 1000w" sizes="(orientation: portrait) 750px, 100vw" src="${desktopImage}"></a>
+                <a href="${basePath}/projects/${slug.current}"><img srcset="${mobileImage} 750w, ${desktopImage} 1000w" sizes="100vw" src="${desktopImage}"></a>
                 <figcaption>
                     <div>
                         <a href="${basePath}/projects/${slug.current}"><strong>${title}</strong></a>

@@ -37,7 +37,7 @@ export class Diptych {
 
                     return /* html */ `
                         <div class="image">
-                            <img srcset="${mobileImage} 750w, ${desktopImage} 1000w" sizes="(orientation: portrait) 750px, 100vw" src="${desktopImage}">
+                            <img srcset="${mobileImage} 750w, ${desktopImage} 1000w" sizes="100vw" src="${desktopImage}">
                             <figcaption>
                                 ${label ? /* html */ `<div><strong>${label}</strong></div>` : ''}
                                 ${caption ? /* html */ `<div>${caption}</div>` : ''}

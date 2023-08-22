@@ -32,7 +32,7 @@ export class Figure {
 
             this.nodeList = html(/* html */ `
                 <figure class="${indent ? 'indent' : ''}">
-                    <img srcset="${mobileImage} 750w, ${desktopImage} 1000w" sizes="(orientation: portrait) 750px, 100vw" src="${desktopImage}">
+                    <img srcset="${mobileImage} 750w, ${desktopImage} 1000w" sizes="100vw" src="${desktopImage}">
                     <figcaption>
                         ${label ? /* html */ `<div><strong>${label}</strong></div>` : ''}
                         ${caption ? /* html */ `<div>${caption}</div>` : ''}
@@ -46,7 +46,7 @@ export class Figure {
 
             this.nodeList = html(/* html */ `
                 <figure>
-                    <img srcset="${mobileImage} 750w, ${desktopImage} 1000w" sizes="(orientation: portrait) 750px, 100vw" src="${desktopImage}">
+                    <img srcset="${mobileImage} 750w, ${desktopImage} 1000w" sizes="100vw" src="${desktopImage}">
                     <figcaption>
                         ${featuredImage.label ? /* html */ `<div><strong>${featuredImage.label}</strong></div>` : ''}
                         ${featuredImage.caption ? /* html */ `<div>${featuredImage.caption}</div>` : ''}
