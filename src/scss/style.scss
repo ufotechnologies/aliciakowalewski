@@ -161,12 +161,12 @@ section {
     display: flex;
     flex-direction: column;
     gap: 32px;
+    max-width: 1800px;
     margin: 50px auto 0;
     padding: 0 25px;
 
     @media (orientation: landscape) {
         width: 64%;
-        max-width: 1800px;
         padding: 0;
     }
 
@@ -182,13 +182,15 @@ section {
 
 figure {
     line-height: 0;
+    max-width: 1800px;
     margin: 50px auto 0;
     padding: 0 5px;
 
     @media (orientation: landscape) {
-        width: 64%;
-        max-width: 1800px;
-        padding: 0;
+        &:first-of-type {
+            width: 64%;
+            padding: 0;
+        }
     }
 
     img,
