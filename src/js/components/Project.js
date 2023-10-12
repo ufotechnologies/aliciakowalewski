@@ -18,7 +18,7 @@ export class Project {
     }
 
     render() {
-        const { slug, featuredImage, title } = this.sectionData;
+        const { slug, featuredImage } = this.sectionData;
 
         const image = data.get('assets').find(doc => doc._id === featuredImage.image.asset._ref).url;
         const mobileImage = `${image}?h=600&fit=crop&crop=center&sharp=25&auto=format`;
@@ -27,11 +27,6 @@ export class Project {
         this.nodeList = html(/* html */ `
             <figure>
                 <a href="${basePath}/projects/${slug.current}"><img srcset="${mobileImage} 750w, ${desktopImage} 1000w" sizes="100vw" src="${desktopImage}"></a>
-                <figcaption>
-                    <div>
-                        <a href="${basePath}/projects/${slug.current}"><strong>${title}</strong></a>
-                    </div>
-                </figcaption>
             </figure>
         `);
     }
