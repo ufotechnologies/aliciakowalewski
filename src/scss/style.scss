@@ -273,6 +273,31 @@ nav {
 }
 
 body {
+    &.home {
+        main {
+            article {
+                section {
+                    &.projects {
+                        flex-wrap: wrap;
+                        flex-direction: row;
+                        gap: 5%;
+                        margin-top: 130px;
+
+                        figure {
+                            margin: 0;
+                            padding: 0;
+                            width: 16%;
+
+                            img {
+                                aspect-ratio: 0.67;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     &.project {
         section {
             &:first-of-type {
