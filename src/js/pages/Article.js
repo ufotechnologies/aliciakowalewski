@@ -38,7 +38,7 @@ export class Article extends Page {
         let index = this.articles.findIndex(doc => doc._id === this.data._id);
 
         if (++index > this.articles.length - 1) {
-          index = 0;
+            index = 0;
         }
 
         const next = new NextProject(this.articles[index]);

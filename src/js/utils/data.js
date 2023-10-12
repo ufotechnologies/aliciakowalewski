@@ -6,8 +6,8 @@ export async function loadData() {
 
         let settings;
         let home;
-        let articles = [];
-        let assets = [];
+        const articles = [];
+        const assets = [];
 
         query.result.forEach(doc => {
             if (doc._type === 'settings') {

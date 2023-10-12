@@ -37,7 +37,7 @@ export class Home extends Page {
         this.article.append(...section.nodeList);
         this.sections.push(section);
 
-        this.data.sections.forEach((data) => {
+        this.data.sections.forEach(data => {
             if (data._type === 'section') {
                 const section = new HomeDescription(data);
                 this.article.append(...section.nodeList);

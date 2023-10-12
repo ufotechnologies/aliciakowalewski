@@ -22,7 +22,7 @@ export class Page {
             return;
         }
 
-        this.data.sections.forEach((data) => {
+        this.data.sections.forEach(data => {
             if (data._type === 'section') {
                 const section = new Section(data);
                 this.article.append(...section.nodeList);
