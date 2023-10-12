@@ -10,13 +10,13 @@
     "lint": "eslint src"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^15.2.0",
-    "concurrently": "^8.2.0",
-    "eslint": "^8.47.0",
-    "rollup": "^3.28.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "concurrently": "^8.2.1",
+    "eslint": "^8.51.0",
+    "rollup": "^4.0.2",
     "rollup-plugin-bundleutils": "^2.0.0",
-    "sass": "^1.66.1",
-    "servez": "^2.0.0"
+    "sass": "^1.69.3",
+    "servez": "^2.1.1"
   },
   "dependencies": {
     "gsap": "^3.12.2"

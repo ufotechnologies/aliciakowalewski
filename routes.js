@@ -9,7 +9,7 @@ const excerptLength = 300;
 const encodeHTMLEntities = s => s.replace(/[\u00A0-\u9999<>\&]/g, i => `&#${i.charCodeAt(0)};`);
 
 const build = async () => {
-    const query = await (await fetch('https://53goq129.api.sanity.io/v2023-08-21/data/query/production?query=*')).json();
+    const query = await (await fetch('https://53goq129.api.sanity.io/v2023-10-12/data/query/production?query=*')).json();
 
     const index = query.result.findIndex(({ _type }) => _type === 'settings');
     let settings = query.result.splice(index, 1)[0];
