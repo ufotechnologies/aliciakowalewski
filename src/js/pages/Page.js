@@ -1,4 +1,5 @@
 import { Default } from '../layouts/Default.js';
+import { Navigation } from '../components/Navigation.js';
 import { Section } from '../components/Section.js';
 import { Figure } from '../components/Figure.js';
 import { Diptych } from '../components/Diptych.js';
@@ -12,6 +13,8 @@ export class Page {
         this.render();
 
         this.el.append(...this.layoutNodeList);
+
+        new Navigation();
 
         this.main = this.el.querySelector('main');
         this.article = this.el.querySelector('article');

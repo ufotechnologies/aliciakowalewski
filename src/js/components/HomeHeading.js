@@ -1,4 +1,3 @@
-import { data } from '../utils/data.js';
 import { html } from '../utils/html.js';
 
 export class HomeHeading {
@@ -17,7 +16,6 @@ export class HomeHeading {
 
         this.nodeList = html(/* html */ `
             <section>
-                <div class="eyebrow">${data.get('title')}</div>
                 <h1>${heading}</h1>
             </section>
         `);
