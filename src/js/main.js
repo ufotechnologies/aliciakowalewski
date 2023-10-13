@@ -1,6 +1,7 @@
 import gsap from 'gsap';
 
 import { Home } from './pages/Home.js';
+import { About } from './pages/About.js';
 import { Article } from './pages/Article.js';
 
 import { loadData } from './utils/data.js';
@@ -10,6 +11,7 @@ Promise.all([
     document.fonts.ready // Preload fonts
 ]).then(() => {
     new Home();
+    new About();
     new Article();
 
     document.documentElement.classList.add('is-loaded');

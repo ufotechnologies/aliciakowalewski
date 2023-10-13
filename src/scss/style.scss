@@ -123,7 +123,7 @@ h1 {
 h2 {
     font-family: 'Big Caslon';
     font-weight: 500;
-    font-size: min(max(20px, 4vw), 64px);
+    font-size: min(max(16px, 4vw), 48px);
     line-height: normal;
 
     @media (orientation: landscape) {
@@ -274,26 +274,30 @@ nav {
 
 body {
     &.home {
-        main {
-            article {
-                section {
-                    &.projects {
-                        flex-wrap: wrap;
-                        flex-direction: row;
-                        gap: 5%;
-                        margin-top: 130px;
+        section {
+            &.projects {
+                flex-wrap: wrap;
+                flex-direction: row;
+                gap: 5%;
+                margin-top: 130px;
 
-                        figure {
-                            margin: 0;
-                            padding: 0;
-                            width: 16%;
+                figure {
+                    margin: 0;
+                    padding: 0;
+                    width: 16%;
 
-                            img {
-                                aspect-ratio: 0.67;
-                            }
-                        }
+                    img {
+                        aspect-ratio: 0.67;
                     }
                 }
+            }
+        }
+    }
+
+    &.about {
+        section {
+            h1 {
+                @extend h2;
             }
         }
     }

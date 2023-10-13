@@ -6,6 +6,7 @@ export async function loadData() {
 
         let settings;
         let home;
+        let about;
         const articles = [];
         const assets = [];
 
@@ -18,6 +19,11 @@ export async function loadData() {
             if (doc._type === 'page') {
                 if (doc.name === 'Home') {
                     home = doc;
+                    return;
+                }
+
+                if (doc.name === 'About') {
+                    about = doc;
                     return;
                 }
             }
@@ -38,6 +44,7 @@ export async function loadData() {
         data.set('shareImage', assets.find(doc => doc._id === settings.shareImage?.asset._ref)?.url);
         data.set('settings', settings);
         data.set('home', home);
+        data.set('about', about);
         data.set('articles', articles);
         data.set('assets', assets);
     }
