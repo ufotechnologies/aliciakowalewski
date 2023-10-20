@@ -17,12 +17,8 @@ export class NextProject {
 
         this.nodeList = html(/* html */ `
             <nav class="next">
-                <ul>
-                    <li>
-                        <div class="eyebrow">Next project</div>
-                        <a href="${basePath}/projects/${slug.current}">${title} <span>⟶</span></a>
-                    </li>
-                </ul>
+                <a href="javascript:history.back();">Back</a>
+                <a href="${basePath}/projects/${slug.current}">Next</a>
             </nav>
         `);
     }

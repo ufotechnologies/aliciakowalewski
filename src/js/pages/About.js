@@ -2,7 +2,6 @@ import { Page } from './Page.js';
 import { Section } from '../components/Section.js';
 import { Figure } from '../components/Figure.js';
 import { Project } from '../components/Project.js';
-import { Next } from '../components/Next.js';
 
 import { data } from '../utils/data.js';
 
