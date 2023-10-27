@@ -53,8 +53,8 @@ const build = async () => {
             type,
             title: title ? encodeHTMLEntities(title) : settings.title,
             description: description ? encodeHTMLEntities(description.replace(/\n/g, ' ').trim()) : settings.description,
-            favicon: `${settings.favicon}?w=512&h=512&fit=crop&crop=center&sharp=25`,
-            shareImage: `${shareImage ? shareImage : settings.shareImage}?w=1200&h=630&fit=crop&crop=center&sharp=25`,
+            favicon: `${settings.favicon}?w=512&h=512&fit=crop&crop=center`,
+            shareImage: `${shareImage ? shareImage : settings.shareImage}?w=1200&h=630&fit=crop&crop=center`,
             fullPath: linkResolver('', doc)
         };
     });
