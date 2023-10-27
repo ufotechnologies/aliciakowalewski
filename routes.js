@@ -17,6 +17,7 @@ const build = async () => {
     settings = {
         title: encodeHTMLEntities(settings.title),
         description: encodeHTMLEntities(settings.description),
+        favicon: query.result.find(({ _id }) => _id === settings.favicon?.asset._ref)?.url,
         shareImage: query.result.find(({ _id }) => _id === settings.shareImage?.asset._ref)?.url
     };
 
@@ -52,6 +53,7 @@ const build = async () => {
             type,
             title: title ? encodeHTMLEntities(title) : settings.title,
             description: description ? encodeHTMLEntities(description.replace(/\n/g, ' ').trim()) : settings.description,
+            favicon: `${settings.favicon}?w=512&h=512&fit=crop&crop=center&sharp=25`,
             shareImage: `${shareImage ? shareImage : settings.shareImage}?w=1200&h=630&fit=crop&crop=center&sharp=25`,
             fullPath: linkResolver('', doc)
         };

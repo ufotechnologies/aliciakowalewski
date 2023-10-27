@@ -34,7 +34,7 @@ routes.result.forEach(page => {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap">
     <link rel="stylesheet" href="${basePath}/assets/css/style.css">
-    <link rel="icon" type="image/svg+xml" href="${basePath}/assets/meta/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="${page.favicon}">
     <link rel="canonical" href="https://aliciakowalewski.ca${page.fullPath}">
 
     <script src="${basePath}/assets/js/app.js" type="module"></script>
