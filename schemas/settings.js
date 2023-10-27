@@ -19,6 +19,11 @@ export default {
       title: 'Description'
     },
     {
+      name: 'favicon',
+      type: 'image',
+      title: 'Favicon'
+    },
+    {
       name: 'shareImage',
       type: 'image',
       title: 'Share image'
