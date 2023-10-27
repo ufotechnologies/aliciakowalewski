@@ -279,7 +279,8 @@ body {
                 figure {
                     margin: 0;
                     padding: 0;
-                    width: 16%;
+                    width: 47.5%;
+                    margin-bottom: 5%;
 
                     img {
                         aspect-ratio: 1;
@@ -287,8 +288,6 @@ body {
                 }
 
                 @media (orientation: landscape) {
-                    gap: 5%;
-
                     figure {
                         width: 16%;
                     }
