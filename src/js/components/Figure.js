@@ -10,6 +10,8 @@ export class Figure {
 
     init() {
         this.render();
+
+        this.el = this.nodeList[0];
     }
 
     render() {
@@ -17,7 +19,7 @@ export class Figure {
 
         if (mp4) {
             this.nodeList = html(/* html */ `
-                <figure class="${indent ? 'indent' : ''}">
+                <figure class="${indent ? 'indent' : ''} fade-in-up">
                     <video autoplay muted loop playsinline src="${mp4}"></video>
                     <figcaption>
                         ${label ? /* html */ `<div><strong>${label}</strong></div>` : ''}
@@ -31,7 +33,7 @@ export class Figure {
             const desktopImage = `${url}?h=1568&fit=min&auto=format`;
 
             this.nodeList = html(/* html */ `
-                <figure class="${indent ? 'indent' : ''}">
+                <figure class="${indent ? 'indent' : ''} fade-in-up">
                     <img srcset="${mobileImage} 750w, ${desktopImage} 1000w" sizes="100vw" src="${desktopImage}">
                     <figcaption>
                         ${label ? /* html */ `<div><strong>${label}</strong></div>` : ''}
@@ -45,7 +47,7 @@ export class Figure {
             const desktopImage = `${url}?h=1568&fit=min&auto=format`;
 
             this.nodeList = html(/* html */ `
-                <figure>
+                <figure class="fade-in-up">
                     <img srcset="${mobileImage} 750w, ${desktopImage} 1000w" sizes="100vw" src="${desktopImage}">
                     <figcaption>
                         ${featuredImage.label ? /* html */ `<div><strong>${featuredImage.label}</strong></div>` : ''}
@@ -55,9 +57,13 @@ export class Figure {
             `);
         } else {
             this.nodeList = html(/* html */ `
-                <figure>
+                <figure class="fade-in-up">
                 </figure>
             `);
         }
     }
+
+    animateIn = () => {
+        this.el.classList.add('visible');
+    };
 }

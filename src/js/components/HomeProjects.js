@@ -22,8 +22,12 @@ export class HomeProjects {
 
     render() {
         this.nodeList = html(/* html */ `
-            <section class="projects">
+            <section class="projects fade-in-up">
             </section>
         `);
     }
+
+    animateIn = () => {
+        this.el.classList.add('visible');
+    };
 }

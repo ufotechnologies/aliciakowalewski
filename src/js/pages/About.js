@@ -4,6 +4,7 @@ import { Figure } from '../components/Figure.js';
 import { Project } from '../components/Project.js';
 
 import { data } from '../utils/data.js';
+import { observe } from '../utils/observer.js';
 
 export class About extends Page {
     constructor() {
@@ -22,6 +23,8 @@ export class About extends Page {
     init() {
         super.init();
         this.appendSections();
+
+        this.sections.forEach(section => observe(section.el, section));
     }
 
     appendSections() {

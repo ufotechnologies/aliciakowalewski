@@ -10,6 +10,8 @@ export class NextProject {
 
     init() {
         this.render();
+
+        this.el = this.nodeList[0];
     }
 
     render() {
@@ -22,4 +24,8 @@ export class NextProject {
             </nav>
         `);
     }
+
+    animateIn = () => {
+        this.el.classList.add('visible');
+    };
 }

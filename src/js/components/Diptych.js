@@ -23,13 +23,15 @@ export class Diptych {
 
     init() {
         this.render();
+
+        this.el = this.nodeList[0];
     }
 
     render() {
         const { indent } = this.sectionData;
 
         this.nodeList = html(/* html */ `
-            <figure class="diptych${indent ? ' indent' : ''}">
+            <figure class="diptych${indent ? ' indent' : ''} fade-in-up">
                 ${this.data.map(({ image, label, caption }) => {
                     const url = data.get('assets').find(doc => doc._id === image.asset._ref).url;
                     const mobileImage = `${url}?h=600&fit=crop&crop=center&sharp=25&auto=format`;
@@ -48,4 +50,8 @@ export class Diptych {
             </figure>
         `);
     }
+
+    animateIn = () => {
+        this.el.classList.add('visible');
+    };
 }

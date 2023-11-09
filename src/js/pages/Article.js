@@ -5,6 +5,7 @@ import { NextProject } from '../components/NextProject.js';
 
 import { basePath } from '../utils/settings.js';
 import { data } from '../utils/data.js';
+import { observe } from '../utils/observer.js';
 
 export class Article extends Page {
     constructor() {
@@ -44,5 +45,7 @@ export class Article extends Page {
         const next = new NextProject(this.articles[index]);
         this.main.append(...next.nodeList);
         this.sections.push(next);
+
+        this.sections.forEach(section => observe(section.el, section));
     }
 }

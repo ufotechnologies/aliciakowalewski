@@ -9,15 +9,21 @@ export class HomeHeading {
 
     init() {
         this.render();
+
+        this.el = this.nodeList[0];
     }
 
     render() {
         const { heading } = this.sectionData;
 
         this.nodeList = html(/* html */ `
-            <section>
+            <section class="fade-in-up">
                 <h1>${heading}</h1>
             </section>
         `);
     }
+
+    animateIn = () => {
+        this.el.classList.add('visible');
+    };
 }

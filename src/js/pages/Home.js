@@ -3,6 +3,7 @@ import { HomeHeading } from '../components/HomeHeading.js';
 import { HomeProjects } from '../components/HomeProjects.js';
 
 import { data } from '../utils/data.js';
+import { observe } from '../utils/observer.js';
 
 export class Home extends Page {
     constructor() {
@@ -21,6 +22,8 @@ export class Home extends Page {
     init() {
         super.init();
         this.appendSections();
+
+        this.sections.forEach(section => observe(section.el, section));
     }
 
     appendSections() {
