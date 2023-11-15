@@ -12,7 +12,7 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "concurrently": "^8.2.2",
     "eslint": "^8.53.0",
-    "rollup": "^4.3.0",
+    "rollup": "^4.4.1",
     "rollup-plugin-bundleutils": "^2.0.0",
     "sass": "^1.69.5",
     "servez": "^2.1.1"
