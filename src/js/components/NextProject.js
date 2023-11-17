@@ -26,6 +26,6 @@ export class NextProject {
     }
 
     animateIn = () => {
-        this.el.classList.add('visible');
+        this.el.classList.add('is-loaded');
     };
 }

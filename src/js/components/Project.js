@@ -20,13 +20,12 @@ export class Project {
     render() {
         const { slug, featuredImage } = this.sectionData;
 
-        const image = data.get('assets').find(doc => doc._id === featuredImage.image.asset._ref).url;
-        const mobileImage = `${image}?h=600&fit=crop&crop=center&sharp=25&auto=format`;
-        const desktopImage = `${image}?h=1568&fit=min&auto=format`;
+        const url = data.get('assets').find(doc => doc._id === featuredImage.image.asset._ref).url;
+        const src = `${url}?h=1568&fit=min&auto=format`;
 
         this.nodeList = html(/* html */ `
             <figure>
-                <a href="${basePath}/projects/${slug.current}"><img srcset="${mobileImage} 750w, ${desktopImage} 1000w" sizes="100vw" src="${desktopImage}"></a>
+                <a href="${basePath}/projects/${slug.current}"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 0 0'%3E%3C/svg%3E" data-src="${src}"></a>
             </figure>
         `);
     }

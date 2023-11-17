@@ -1,3 +1,5 @@
+import { lazyLoad } from './lazyLoad.js';
+
 export const observer = new IntersectionObserver(onIntersect);
 export const observerMap = new Map();
 
@@ -16,9 +18,8 @@ export function onIntersect(entries) {
         const object = observerMap.get(entry.target);
 
         if (object && object.animateIn && entry.isIntersecting) {
-            object.animateIn();
-
-            unobserve(entry.target, object);
+            lazyLoad(entry.target).then(object.animateIn);
+            unobserve(entry.target);
         }
     });
 }

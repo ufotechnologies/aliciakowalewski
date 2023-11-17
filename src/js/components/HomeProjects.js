@@ -22,12 +22,12 @@ export class HomeProjects {
 
     render() {
         this.nodeList = html(/* html */ `
-            <section class="projects fade-in-up">
+            <section class="projects scroll-lazy">
             </section>
         `);
     }
 
     animateIn = () => {
-        this.el.classList.add('visible');
+        this.el.classList.add('is-loaded');
     };
 }

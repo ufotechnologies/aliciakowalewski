@@ -31,15 +31,14 @@ export class Diptych {
         const { indent } = this.sectionData;
 
         this.nodeList = html(/* html */ `
-            <figure class="diptych${indent ? ' indent' : ''} fade-in-up">
+            <figure class="diptych${indent ? ' indent' : ''} scroll-lazy">
                 ${this.data.map(({ image, label, caption }) => {
                     const url = data.get('assets').find(doc => doc._id === image.asset._ref).url;
-                    const mobileImage = `${url}?h=600&fit=crop&crop=center&sharp=25&auto=format`;
-                    const desktopImage = `${url}?h=1568&fit=min&auto=format`;
+                    const src = `${url}?h=1568&fit=min&auto=format`;
 
                     return /* html */ `
                         <div class="image">
-                            <img srcset="${mobileImage} 750w, ${desktopImage} 1000w" sizes="100vw" src="${desktopImage}">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 0 0'%3E%3C/svg%3E" data-src="${src}">
                             <figcaption>
                                 ${label ? /* html */ `<div><strong>${label}</strong></div>` : ''}
                                 ${caption ? /* html */ `<div>${caption}</div>` : ''}
@@ -52,6 +51,6 @@ export class Diptych {
     }
 
     animateIn = () => {
-        this.el.classList.add('visible');
+        this.el.classList.add('is-loaded');
     };
 }

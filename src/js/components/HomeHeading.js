@@ -17,13 +17,13 @@ export class HomeHeading {
         const { heading } = this.sectionData;
 
         this.nodeList = html(/* html */ `
-            <section class="fade-in-up">
+            <section class="scroll-lazy">
                 <h1>${heading}</h1>
             </section>
         `);
     }
 
     animateIn = () => {
-        this.el.classList.add('visible');
+        this.el.classList.add('is-loaded');
     };
 }
