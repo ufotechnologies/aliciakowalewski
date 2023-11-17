@@ -28,12 +28,14 @@ export class Figure {
                 </figure>
             `);
         } else if (image) {
-            const url = data.get('assets').find(doc => doc._id === image.asset._ref).url;
-            const src = `${url}?h=1568&fit=min&auto=format`;
+            const asset = data.get('assets').find(doc => doc._id === image.asset._ref);
+            const src = `${asset.url}?h=1568&fit=min&auto=format`;
+            const width = asset.metadata.dimensions.width;
+            const height = asset.metadata.dimensions.height;
 
             this.nodeList = html(/* html */ `
                 <figure class="${indent ? 'indent' : ''} scroll-lazy">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 0 0'%3E%3C/svg%3E" data-src="${src}">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 0 0'%3E%3C/svg%3E" data-src="${src}" width="${width}" height="${height}">
                     <figcaption>
                         ${label ? /* html */ `<div><strong>${label}</strong></div>` : ''}
                         ${caption ? /* html */ `<div>${caption}</div>` : ''}
@@ -41,12 +43,14 @@ export class Figure {
                 </figure>
             `);
         } else if (featuredImage) {
-            const url = data.get('assets').find(doc => doc._id === featuredImage.image.asset._ref).url;
-            const src = `${url}?h=1568&fit=min&auto=format`;
+            const asset = data.get('assets').find(doc => doc._id === featuredImage.image.asset._ref);
+            const src = `${asset.url}?h=1568&fit=min&auto=format`;
+            const width = asset.metadata.dimensions.width;
+            const height = asset.metadata.dimensions.height;
 
             this.nodeList = html(/* html */ `
                 <figure class="scroll-lazy">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 0 0'%3E%3C/svg%3E" data-src="${src}">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 0 0'%3E%3C/svg%3E" data-src="${src}" width="${width}" height="${height}">
                     <figcaption>
                         ${featuredImage.label ? /* html */ `<div><strong>${featuredImage.label}</strong></div>` : ''}
                         ${featuredImage.caption ? /* html */ `<div>${featuredImage.caption}</div>` : ''}

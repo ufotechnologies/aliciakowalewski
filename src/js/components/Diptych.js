@@ -33,12 +33,14 @@ export class Diptych {
         this.nodeList = html(/* html */ `
             <figure class="diptych${indent ? ' indent' : ''} scroll-lazy">
                 ${this.data.map(({ image, label, caption }) => {
-                    const url = data.get('assets').find(doc => doc._id === image.asset._ref).url;
-                    const src = `${url}?h=1568&fit=min&auto=format`;
+                    const asset = data.get('assets').find(doc => doc._id === image.asset._ref);
+                    const src = `${asset.url}?h=1568&fit=min&auto=format`;
+                    const width = asset.metadata.dimensions.width;
+                    const height = asset.metadata.dimensions.height;
 
                     return /* html */ `
                         <div class="image">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 0 0'%3E%3C/svg%3E" data-src="${src}">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 0 0'%3E%3C/svg%3E" data-src="${src}" width="${width}" height="${height}">
                             <figcaption>
                                 ${label ? /* html */ `<div><strong>${label}</strong></div>` : ''}
                                 ${caption ? /* html */ `<div>${caption}</div>` : ''}

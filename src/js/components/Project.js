@@ -20,12 +20,14 @@ export class Project {
     render() {
         const { slug, featuredImage } = this.sectionData;
 
-        const url = data.get('assets').find(doc => doc._id === featuredImage.image.asset._ref).url;
-        const src = `${url}?h=1568&fit=min&auto=format`;
+        const asset = data.get('assets').find(doc => doc._id === featuredImage.image.asset._ref);
+        const src = `${asset.url}?h=1568&fit=min&auto=format`;
+        const width = asset.metadata.dimensions.width;
+        const height = asset.metadata.dimensions.height;
 
         this.nodeList = html(/* html */ `
             <figure>
-                <a href="${basePath}/projects/${slug.current}"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 0 0'%3E%3C/svg%3E" data-src="${src}"></a>
+                <a href="${basePath}/projects/${slug.current}"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 0 0'%3E%3C/svg%3E" data-src="${src}" width="${width}" height="${height}"></a>
             </figure>
         `);
     }
