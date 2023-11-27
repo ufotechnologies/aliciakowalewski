@@ -18,7 +18,8 @@ export function onIntersect(entries) {
         const object = observerMap.get(entry.target);
 
         if (object && object.animateIn && entry.isIntersecting) {
-            lazyLoad(entry.target).then(object.animateIn);
+            // lazyLoad(entry.target).then(object.animateIn);
+            object.animateIn();
             unobserve(entry.target);
         }
     });

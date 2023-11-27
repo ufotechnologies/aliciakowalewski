@@ -4,6 +4,7 @@ import { Section } from '../components/Section.js';
 import { Figure } from '../components/Figure.js';
 import { Diptych } from '../components/Diptych.js';
 import { Project } from '../components/Project.js';
+import { Smooth } from '../components/Smooth.js';
 
 import { html } from '../utils/html.js';
 
@@ -13,10 +14,16 @@ export class Page {
 
         this.el.append(...this.layoutNodeList);
 
-        new Navigation();
+        this.navigation = new Navigation();
 
         this.main = this.el.querySelector('main');
         this.article = this.el.querySelector('article');
+
+        this.smooth = new Smooth({
+            root: this.main,
+            container: this.article,
+            // lerpSpeed: 0.075
+        });
     }
 
     appendSections() {
@@ -55,7 +62,7 @@ export class Page {
 
             if (data._type === 'next') {
                 const next = new Next(data);
-                this.main.append(...next.nodeList);
+                this.article.append(...next.nodeList);
                 this.sections.push(next);
                 return;
             }

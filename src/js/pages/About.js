@@ -56,7 +56,7 @@ export class About extends Page {
 
             if (data._type === 'next') {
                 const next = new Next(data);
-                this.main.append(...next.nodeList);
+                this.article.append(...next.nodeList);
                 this.sections.push(next);
                 return;
             }
