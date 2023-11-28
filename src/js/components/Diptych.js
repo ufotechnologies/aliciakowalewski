@@ -40,7 +40,7 @@ export class Diptych {
 
                     return /* html */ `
                         <div class="image">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 0 0'%3E%3C/svg%3E" data-src="${src}" width="${width}" height="${assetHeight}">
+                            <img src="${src}" width="${width}" height="${assetHeight}">
                             <figcaption>
                                 ${label ? /* html */ `<div><strong>${label}</strong></div>` : ''}
                                 ${caption ? /* html */ `<div>${caption}</div>` : ''}
