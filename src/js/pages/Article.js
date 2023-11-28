@@ -14,7 +14,7 @@ export class Article extends Page {
         this.el = document.querySelector('body.project');
 
         if (this.el) {
-            this.slug = location.pathname.replace(new RegExp(`${basePath}/projects/(.+?)(?:\.html|$)`), '$1');
+            this.slug = location.pathname.replace(new RegExp(`${basePath}/projects/(.+?)(?:.html|$)`), '$1');
             this.articles = data.get('articles');
             this.data = this.articles.find(doc => doc.slug.current === this.slug);
             this.sections = [];

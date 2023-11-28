@@ -59,13 +59,6 @@ export class Page {
                 this.sections.push(project);
                 return;
             }
-
-            if (data._type === 'next') {
-                const next = new Next(data);
-                this.article.append(...next.nodeList);
-                this.sections.push(next);
-                return;
-            }
         });
     }
 

@@ -32,7 +32,7 @@ export class About extends Page {
             return;
         }
 
-        this.data.sections.forEach((data) => {
+        this.data.sections.forEach(data => {
             if (data._type === 'section') {
                 const section = new Section(data);
                 this.article.append(...section.nodeList);
@@ -51,13 +51,6 @@ export class About extends Page {
                 const project = new Project(data);
                 this.article.append(...project.nodeList);
                 this.sections.push(project);
-                return;
-            }
-
-            if (data._type === 'next') {
-                const next = new Next(data);
-                this.article.append(...next.nodeList);
-                this.sections.push(next);
                 return;
             }
         });
