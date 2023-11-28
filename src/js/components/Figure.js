@@ -16,20 +16,27 @@ export class Figure {
 
         this.el = this.nodeList[0];
 
-        if (this.parallax) {
-            this.parallax = this.el.querySelector('img, video');
-            this.isVisible = false;
-            this.topPosition = 0;
-            this.totalDisplacement = 0;
-            this.currentParallax = 0;
-            this.targetParallax = 0;
+        gsap.set(this.el, { y: 10, opacity: 0 });
 
-            const p = Math.round(0.2 * window.innerHeight);
-            Object.assign(this.parallax.style, {
-                width: `calc(100% + ${p}px)`,
-                height: `calc(100% + ${p}px)`,
+        if (this.parallax && !navigator.maxTouchPoints) {
+            this.parallax = this.el.querySelector('img, video');
+            this.movement = Math.round(window.innerHeight * 0.2);
+            this.lerpSpeed = 0.075;
+
+            this.top = 0;
+            this.bottom = 0;
+            this.position = 0;
+            this.target = 0;
+            this.last = 0;
+            this.delta = 0;
+            this.direction = 0;
+            this.isVisible = false;
+
+            gsap.set(this.parallax, {
+                width: `calc(100% + ${this.movement}px)`,
+                height: `calc(100% + ${this.movement}px)`,
                 bottom: 0,
-                left: `${-p * 0.5}px`
+                left: -this.movement / 2
             });
 
             this.addListeners();
@@ -98,41 +105,45 @@ export class Figure {
     onResize = () => {
         // defer
         gsap.delayedCall(0, () => {
-            this.topPosition = this.el.offsetTop - window.innerHeight;
-            this.topPosition = Math.max(this.topPosition, 0); // clamp to 0
-            this.totalDisplacement = this.el.clientHeight + window.innerHeight;
+            this.top = Math.max(this.el.offsetTop - window.innerHeight, 0); // clamp to 0
+            this.bottom = this.el.clientHeight + window.innerHeight;
         });
     };
 
     onUpdate = () => {
         if (
-            document.scrollingElement.scrollTop >= this.topPosition &&
-            document.scrollingElement.scrollTop <= this.topPosition + this.totalDisplacement
+            document.scrollingElement.scrollTop >= this.top &&
+            document.scrollingElement.scrollTop <= this.top + this.bottom
         ) {
-            this.targetParallax = gsap.utils.mapRange(
+            this.target = gsap.utils.mapRange(
                 0,
                 1,
                 0,
                 -1,
-                (document.scrollingElement.scrollTop - this.topPosition) / this.totalDisplacement
+                (document.scrollingElement.scrollTop - this.top) / this.bottom
             );
-            // this.targetParallax = Math.min(Math.max(this.targetParallax, 0), -1); // clamp
 
             if (!this.isVisible) {
-                this.currentParallax = this.targetParallax;
+                this.position = this.target;
             } else {
-                this.currentParallax = gsap.utils.interpolate(
-                    this.currentParallax,
-                    this.targetParallax,
-                    0.075
+                this.position = gsap.utils.interpolate(
+                    this.position,
+                    this.target,
+                    this.lerpSpeed
                 );
             }
 
-            // this.parallax.style.transform = `translateY(${-Math.round(0.2 * window.innerHeight * this.currentParallax)}px)`;
-            this.parallax.style.transform = `translateY(${-0.2 * window.innerHeight * this.currentParallax}px)`;
-            // this.parallax.style.transform = `translateY(${-Math.round(0.2 * window.innerHeight * this.currentParallax * 100) / 100}px)`;
+            this.delta = this.position - this.last;
+            this.last = this.position;
+            this.direction = Math.sign(this.delta);
 
             this.isVisible = true;
+
+            if (Math.abs(this.delta) < 0.001) {
+                return;
+            }
+
+            gsap.set(this.parallax, { y: -this.movement * this.position });
         } else {
             this.isVisible = false;
         }
@@ -141,6 +152,6 @@ export class Figure {
     // Public methods
 
     animateIn = () => {
-        this.el.classList.add('is-loaded');
+        gsap.to(this.el, { y: 0, opacity: 1, duration: 1 });
     };
 }

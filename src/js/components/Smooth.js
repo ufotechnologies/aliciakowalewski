@@ -22,7 +22,7 @@ export class Smooth {
 
     init() {
         if (!navigator.maxTouchPoints) {
-            Object.assign(this.root.style, {
+            gsap.set(this.root, {
                 position: 'fixed',
                 left: 0,
                 top: 0,
@@ -31,7 +31,7 @@ export class Smooth {
                 overflow: 'hidden'
             });
 
-            this.container.style.willChange = 'transform';
+            gsap.set(this.container, { willChange: 'transform' });
         }
 
         this.addListeners();
@@ -48,7 +48,7 @@ export class Smooth {
         gsap.delayedCall(0, () => {
             const { height } = this.container.getBoundingClientRect();
 
-            document.body.style.height = `${height}px`;
+            gsap.set(document.body, { height });
 
             this.height = height;
             this.position = document.scrollingElement.scrollTop;
@@ -75,9 +75,7 @@ export class Smooth {
         }
 
         if (!navigator.maxTouchPoints) {
-            // this.container.style.transform = `translateY(${-Math.round(this.position)}px)`;
-            this.container.style.transform = `translateY(${-this.position}px)`;
-            // this.container.style.transform = `translateY(${-Math.round(this.position * 100) / 100}px)`;
+            gsap.set(this.container, { y: -this.position });
         }
 
         gsap.utils.clamp(0, 1, this.position / (this.height - document.documentElement.clientHeight));
