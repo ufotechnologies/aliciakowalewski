@@ -32,10 +32,10 @@ export class Smooth {
             });
 
             gsap.set(this.container, { willChange: 'transform' });
-        }
 
-        this.addListeners();
-        this.onResize();
+            this.addListeners();
+            this.onResize();
+        }
     }
 
     addListeners() {
