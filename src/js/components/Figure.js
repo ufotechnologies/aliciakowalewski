@@ -17,7 +17,8 @@ export class Figure {
 
         this.el = this.nodeList[0];
 
-        gsap.set(this.el, { y: 10, opacity: 0 });
+        // gsap.set(this.el, { y: 10, opacity: 0 });
+        // gsap.set(this.el, { opacity: 0 });
 
         if (this.parallax && !navigator.maxTouchPoints) {
             this.parallax = this.el.querySelector('img, video');
@@ -147,6 +148,8 @@ export class Figure {
     // Public methods
 
     animateIn = () => {
-        gsap.to(this.el, { y: 0, opacity: 1, duration: 1 });
+        // gsap.to(this.el, { y: 0, opacity: 1, duration: 1 });
+        // gsap.to(this.el, { opacity: 1, duration: 1 });
+        this.el.classList.add('is-loaded');
     };
 }
