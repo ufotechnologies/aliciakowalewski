@@ -1,5 +1,6 @@
 import gsap from 'gsap';
 
+import { assetHeight } from '../utils/settings.js';
 import { data } from '../utils/data.js';
 import { html } from '../utils/html.js';
 
@@ -59,13 +60,12 @@ export class Figure {
             `);
         } else if (image) {
             const asset = data.get('assets').find(doc => doc._id === image.asset._ref);
-            const src = `${asset.url}?h=1568&fit=min&auto=format`;
-            const width = asset.metadata.dimensions.width;
-            const height = asset.metadata.dimensions.height;
+            const src = `${asset.url}?h=${assetHeight}&fit=min&auto=format`;
+            const width = Math.round(assetHeight * asset.metadata.dimensions.aspectRatio);
 
             this.nodeList = html(/* html */ `
                 <figure class="${indent ? 'indent ' : ''}scroll-lazy${this.parallax ? ' parallax' : ''}">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 0 0'%3E%3C/svg%3E" data-src="${src}" width="${width}" height="${height}">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 0 0'%3E%3C/svg%3E" data-src="${src}" width="${width}" height="${assetHeight}">
                     <figcaption>
                         ${label ? /* html */ `<div><strong>${label}</strong></div>` : ''}
                         ${caption ? /* html */ `<div>${caption}</div>` : ''}
@@ -74,13 +74,12 @@ export class Figure {
             `);
         } else if (featuredImage) {
             const asset = data.get('assets').find(doc => doc._id === featuredImage.image.asset._ref);
-            const src = `${asset.url}?h=1568&fit=min&auto=format`;
-            const width = asset.metadata.dimensions.width;
-            const height = asset.metadata.dimensions.height;
+            const src = `${asset.url}?h=${assetHeight}&fit=min&auto=format`;
+            const width = Math.round(assetHeight * asset.metadata.dimensions.aspectRatio);
 
             this.nodeList = html(/* html */ `
                 <figure class="scroll-lazy${this.parallax ? ' parallax' : ''}">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 0 0'%3E%3C/svg%3E" data-src="${src}" width="${width}" height="${height}">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 0 0'%3E%3C/svg%3E" data-src="${src}" width="${width}" height="${assetHeight}">
                     <figcaption>
                         ${featuredImage.label ? /* html */ `<div><strong>${featuredImage.label}</strong></div>` : ''}
                         ${featuredImage.caption ? /* html */ `<div>${featuredImage.caption}</div>` : ''}
@@ -138,10 +137,6 @@ export class Figure {
             this.direction = Math.sign(this.delta);
 
             this.isVisible = true;
-
-            if (Math.abs(this.delta) < 0.001) {
-                return;
-            }
 
             gsap.set(this.parallax, { y: -this.movement * this.position });
         } else {

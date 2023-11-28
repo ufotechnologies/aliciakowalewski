@@ -70,10 +70,6 @@ export class Smooth {
         this.last = this.position;
         this.direction = Math.sign(this.delta);
 
-        if (Math.abs(this.delta) < 0.001) {
-            return;
-        }
-
         if (!navigator.maxTouchPoints) {
             gsap.set(this.container, { y: -this.position });
         }
