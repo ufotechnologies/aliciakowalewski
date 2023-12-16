@@ -2,7 +2,7 @@ export const data = new Map();
 
 export async function loadData() {
     if (!data.size) {
-        const query = await (await fetch('https://53goq129.api.sanity.io/v2023-11-27/data/query/production?query=*')).json();
+        const query = await (await fetch('https://53goq129.api.sanity.io/v2023-12-16/data/query/production?query=*')).json();
 
         let settings;
         let home;
