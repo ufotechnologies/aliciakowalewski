@@ -16,7 +16,7 @@ export class HomeProjects {
 
         this.sectionData.forEach(section => {
             const project = new Project(section);
-            this.el.append(...project.nodeList);
+            this.el.append(project.el);
         });
     }
 

@@ -27,11 +27,11 @@ export class Article extends Page {
         super.init();
 
         const section = new SectionProject(this.data);
-        this.article.append(...section.nodeList);
+        this.article.append(section.el);
         this.sections.push(section);
 
         const figure = new Figure(this.data, true);
-        this.article.append(...figure.nodeList);
+        this.article.append(figure.el);
         this.sections.push(figure);
 
         super.appendSections();
@@ -43,7 +43,7 @@ export class Article extends Page {
         }
 
         const next = new NextProject(this.articles[index]);
-        this.article.append(...next.nodeList);
+        this.article.append(next.el);
         this.sections.push(next);
 
         this.sections.forEach(section => observe(section.el, section));

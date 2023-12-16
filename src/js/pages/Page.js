@@ -34,28 +34,28 @@ export class Page {
         this.data.sections.forEach(data => {
             if (data._type === 'section') {
                 const section = new Section(data);
-                this.article.append(...section.nodeList);
+                this.article.append(section.el);
                 this.sections.push(section);
                 return;
             }
 
             if (data._type === 'figure') {
                 const figure = new Figure(data);
-                this.article.append(...figure.nodeList);
+                this.article.append(figure.el);
                 this.sections.push(figure);
                 return;
             }
 
             if (data._type === 'diptych') {
                 const diptych = new Diptych(data);
-                this.article.append(...diptych.nodeList);
+                this.article.append(diptych.el);
                 this.sections.push(diptych);
                 return;
             }
 
             if (data._type === 'project') {
                 const project = new Project(data);
-                this.article.append(...project.nodeList);
+                this.article.append(project.el);
                 this.sections.push(project);
                 return;
             }
