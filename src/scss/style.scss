@@ -31,12 +31,20 @@
     box-shadow: none;
 }
 
-html {
+html, body {
     overflow-x: hidden;
-    min-height: 100%;
+    min-height: 100vh;
+}
+
+html {
     scrollbar-width: none;
     -ms-overflow-style: -ms-autohiding-scrollbar;
+    background-color: var(--accent-color);
     font-size: 62.5%;
+
+    @media (orientation: landscape) {
+        background-color: var(--bg-color);
+    }
 }
 
 body {
@@ -68,8 +76,7 @@ img, video {
     height: auto;
 }
 
-strong,
-.active {
+strong, .active {
     font-weight: 700;
 }
 
@@ -79,12 +86,12 @@ strong,
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--bg-color);
-    z-index: 2;
+    background-color: var(--accent-color);
+    z-index: 3;
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s,
-                visibility 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s;
+    // transition: opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s,
+    //             visibility 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s;
     pointer-events: none;
 }
 
@@ -95,8 +102,7 @@ strong,
     }
 }
 
-/* .lazy,
-.scroll-lazy {
+/* .lazy, .scroll-lazy {
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 1s cubic-bezier(0.215, 0.61, 0.355, 1),
@@ -108,8 +114,7 @@ strong,
         transform: translateY(0);
     }
 } */
-/* .lazy,
-.scroll-lazy {
+/* .lazy, .scroll-lazy {
     opacity: 0;
     transition: opacity 1s cubic-bezier(0.215, 0.61, 0.355, 1);
     will-change: opacity;
@@ -131,6 +136,16 @@ strong,
     }
 }
 
+.transition {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
 ::selection {
     background-color: var(--accent-color);
     color: var(--ui-color);
@@ -139,7 +154,7 @@ strong,
 h1 {
     font-family: 'Big Caslon';
     font-weight: 500;
-    font-size: min(max(48px, 9vw), 132px);
+    font-size: clamp(48px, 9vw, 132px);
     line-height: normal;
 
     span {
@@ -154,7 +169,7 @@ h1 {
 h2 {
     font-family: 'Big Caslon';
     font-weight: 500;
-    font-size: min(max(16px, 4vw), 48px);
+    font-size: clamp(16px, 4vw, 48px);
     line-height: normal;
 
     @media (orientation: landscape) {
@@ -163,7 +178,7 @@ h2 {
 }
 
 h3 {
-    font-size: min(max(14px, 1.1vw), 32px);
+    font-size: clamp(14px, 1.1vw, 32px);
     font-style: normal;
 
     @media (orientation: landscape) {
@@ -240,8 +255,7 @@ figure {
         padding: 0;
     }
 
-    img,
-    video {
+    img, video {
         object-fit: cover;
     }
 
@@ -284,7 +298,8 @@ body {
                 flex-wrap: wrap;
                 flex-direction: row;
                 gap: 5%;
-                margin: 130px auto 25px;
+                margin: 130px auto 0;
+                padding-bottom: 25px;
 
                 figure {
                     margin: 0;
@@ -298,7 +313,8 @@ body {
                 }
 
                 @media (orientation: landscape) {
-                    margin: 130px auto 50px;
+                    margin: 130px auto 0;
+                    padding-bottom: 50px;
 
                     figure {
                         width: 16%;
@@ -317,7 +333,7 @@ body {
     }
 
     &.project {
-        header {
+        nav:first-of-type {
             display: none;
         }
 

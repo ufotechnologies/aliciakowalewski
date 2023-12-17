@@ -40,6 +40,10 @@ routes.result.forEach(page => {
     <script src="${basePath}/assets/js/app.js" type="module"></script>
 </head>
 <body class="${page.type}">
+    <main>
+        <article></article>
+    </main>
+    <div class="transition"></div>
     <div class="preloader"></div>
 </body>
 </html>

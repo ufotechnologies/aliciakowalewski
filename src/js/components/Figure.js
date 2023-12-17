@@ -1,11 +1,14 @@
 import gsap from 'gsap';
 
+import { Component } from './Component.js';
 import { assetHeight } from '../utils/settings.js';
 import { data } from '../utils/data.js';
 import { html } from '../utils/html.js';
 
-export class Figure {
+export class Figure extends Component {
     constructor(sectionData, parallax) {
+        super();
+
         this.sectionData = sectionData;
         this.parallax = parallax;
 

@@ -1,11 +1,15 @@
 import gsap from 'gsap';
 
-export class Smooth {
+import { Component } from './Component.js';
+
+export class Smooth extends Component {
     constructor({
         root,
         container,
         lerpSpeed = 0.1
     } = {}) {
+        super();
+
         this.root = root;
         this.container = container;
         this.lerpSpeed = lerpSpeed;
@@ -33,8 +37,7 @@ export class Smooth {
 
             gsap.set(this.container, { willChange: 'transform' });
 
-            this.addListeners();
-            this.onResize();
+            this.enable();
         }
     }
 
@@ -42,6 +45,13 @@ export class Smooth {
         window.addEventListener('resize', this.onResize);
         gsap.ticker.add(this.onUpdate);
     }
+
+    removeListeners() {
+        window.removeEventListener('resize', this.onResize);
+        gsap.ticker.remove(this.onUpdate);
+    }
+
+    // Event handlers
 
     onResize = () => {
         // defer
@@ -75,5 +85,28 @@ export class Smooth {
         }
 
         gsap.utils.clamp(0, 1, this.position / (this.height - document.documentElement.clientHeight));
+    };
+
+    // Public methods
+
+    setScroll = top => {
+        document.scrollingElement.scrollTop = top;
+    };
+
+    enable = () => {
+        this.addListeners();
+        this.onResize();
+    };
+
+    disable = () => {
+        this.removeListeners();
+
+        document.body.style.height = '';
+    };
+
+    destroy = () => {
+        this.disable();
+
+        return super.destroy();
     };
 }

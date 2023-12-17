@@ -1,9 +1,12 @@
+import { Component } from './Component.js';
 import { assetHeight } from '../utils/settings.js';
 import { data } from '../utils/data.js';
 import { html } from '../utils/html.js';
 
-export class Diptych {
+export class Diptych extends Component {
     constructor(sectionData) {
+        super();
+
         this.sectionData = sectionData;
 
         this.data = [

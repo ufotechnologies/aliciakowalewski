@@ -1,9 +1,12 @@
+import { Component } from './Component.js';
 import { assetHeight, basePath } from '../utils/settings.js';
 import { data } from '../utils/data.js';
 import { html } from '../utils/html.js';
 
-export class Project {
+export class Project extends Component {
     constructor(sectionData) {
+        super();
+
         this.sectionData = sectionData;
 
         if (this.sectionData._ref) {
@@ -15,6 +18,11 @@ export class Project {
 
     init() {
         this.render();
+
+        this.el = this.nodeList[0];
+        this.links = this.el.querySelectorAll('a');
+
+        this.addListeners();
     }
 
     render() {
@@ -30,4 +38,17 @@ export class Project {
             </figure>
         `);
     }
+
+    addListeners() {
+        this.links.forEach(el => el.addEventListener('click', this.onClick));
+    }
+
+    // Event handlers
+
+    onClick = e => {
+        e.preventDefault();
+
+        const path = e.currentTarget.getAttribute('href');
+        this.setPath(path);
+    };
 }

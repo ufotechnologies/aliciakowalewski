@@ -2,7 +2,6 @@ import { Page } from './Page.js';
 import { SectionProject } from '../components/SectionProject.js';
 import { Figure } from '../components/Figure.js';
 import { NextProject } from '../components/NextProject.js';
-
 import { basePath } from '../utils/settings.js';
 import { data } from '../utils/data.js';
 import { observe } from '../utils/observer.js';
@@ -11,39 +10,49 @@ export class Article extends Page {
     constructor() {
         super();
 
-        this.el = document.querySelector('body.project');
+        this.slug = location.pathname.replace(new RegExp(`${basePath}/projects/(.+?)(?:.html|$)`), '$1');
+        this.articles = data.get('articles');
+        this.data = this.articles.find(doc => doc.slug.current === this.slug);
+        this.sections = [];
 
-        if (this.el) {
-            this.slug = location.pathname.replace(new RegExp(`${basePath}/projects/(.+?)(?:.html|$)`), '$1');
-            this.articles = data.get('articles');
-            this.data = this.articles.find(doc => doc.slug.current === this.slug);
-            this.sections = [];
+        document.body.className = 'project';
+        document.title = `${this.data.title} — ${data.get('title')}`;
 
-            this.init();
-        }
+        this.init();
     }
 
     init() {
         super.init();
 
         const section = new SectionProject(this.data);
-        this.article.append(section.el);
+        this.el.append(section.el);
         this.sections.push(section);
 
         const figure = new Figure(this.data, true);
-        this.article.append(figure.el);
+        this.el.append(figure.el);
         this.sections.push(figure);
 
         super.appendSections();
 
-        let index = this.articles.findIndex(doc => doc._id === this.data._id);
+        const index = this.articles.findIndex(doc => doc._id === this.data._id);
+        let prevIndex = index;
+        let nextIndex = index;
 
-        if (++index > this.articles.length - 1) {
-            index = 0;
+        if (--prevIndex < 0) {
+            prevIndex = this.articles.length - 1;
         }
 
-        const next = new NextProject(this.articles[index]);
-        this.article.append(next.el);
+        if (++nextIndex > this.articles.length - 1) {
+            nextIndex = 0;
+        }
+
+        const data = {
+            back: this.articles[prevIndex],
+            next: this.articles[nextIndex]
+        };
+
+        const next = new NextProject(data);
+        this.el.append(next.el);
         this.sections.push(next);
 
         this.sections.forEach(section => observe(section.el, section));

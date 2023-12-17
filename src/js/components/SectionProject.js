@@ -1,7 +1,10 @@
+import { Component } from './Component.js';
 import { html } from '../utils/html.js';
 
-export class SectionProject {
+export class SectionProject extends Component {
     constructor(sectionData) {
+        super();
+
         this.sectionData = sectionData;
 
         this.init();
