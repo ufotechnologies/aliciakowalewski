@@ -1,17 +1,21 @@
-import gsap from 'gsap';
-
 import { Home } from './pages/Home.js';
 import { About } from './pages/About.js';
 import { Article } from './pages/Article.js';
+import { Transition } from './components/Transition.js';
+import { basePath } from './utils/settings.js';
+import { router } from './utils/router.js';
 import { loadData } from './utils/data.js';
-import { onPopState, router } from './utils/router.js';
 import { lazyLoad } from './utils/lazyLoad.js';
 
 await loadData();
-router.set('/', Home);
-router.set('/about', About);
-router.set('/projects', Article);
-onPopState();
+router.add('/', Home);
+router.add('/about', About);
+router.add('/projects', Article);
+router.init({
+    path: basePath,
+    page: document.querySelector('article'),
+    transition: new Transition()
+});
 
 const assets = [];
 document.querySelectorAll('.scroll-lazy').forEach(el => assets.push(lazyLoad(el)));

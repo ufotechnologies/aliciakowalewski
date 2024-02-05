@@ -1,5 +1,6 @@
 import { Component } from './Component.js';
 import { assetHeight, basePath } from '../utils/settings.js';
+import { router } from '../utils/router.js';
 import { data } from '../utils/data.js';
 import { html } from '../utils/html.js';
 
@@ -53,7 +54,7 @@ export class Project extends Component {
         e.preventDefault();
 
         const path = e.currentTarget.getAttribute('href');
-        this.setPath(path);
+        router.setPath(path);
     };
 
     // Public methods

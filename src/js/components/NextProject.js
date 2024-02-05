@@ -1,5 +1,6 @@
 import { Component } from './Component.js';
 import { basePath } from '../utils/settings.js';
+import { router } from '../utils/router.js';
 import { html } from '../utils/html.js';
 
 export class NextProject extends Component {
@@ -41,7 +42,7 @@ export class NextProject extends Component {
         e.preventDefault();
 
         const path = e.currentTarget.getAttribute('href');
-        this.setPath(path);
+        router.setPath(path);
     };
 
     // Public methods
