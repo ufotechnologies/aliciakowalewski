@@ -9,7 +9,7 @@
     "start": "servez public"
   },
   "dependencies": {
-    "@alienkitty/space.js": "^1.1.0",
+    "@alienkitty/space.js": "alienkitty/space.js#dev",
     "gsap": "^3.12.5"
   },
   "devDependencies": {
