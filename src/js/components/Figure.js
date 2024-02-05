@@ -119,6 +119,7 @@ export class Figure extends Component {
 
     onUpdate = () => {
         if (
+            this.bottom > 0 &&
             document.scrollingElement.scrollTop >= this.top &&
             document.scrollingElement.scrollTop <= this.top + this.bottom
         ) {
