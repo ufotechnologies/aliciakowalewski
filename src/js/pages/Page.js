@@ -81,15 +81,26 @@ export class Page {
     };
 
     enable = () => {
-        this.smooth.enable();
     };
 
     disable = () => {
         this.smooth.disable();
+
+        for (let i = 0, l = this.sections.length; i < l; i++) {
+            if (this.sections[i] && this.sections[i].destroy) {
+                this.sections[i].disable();
+            }
+        }
     };
 
     destroy() {
         this.smooth.destroy();
+
+        for (let i = this.sections.length - 1; i >= 0; i--) {
+            if (this.sections[i] && this.sections[i].destroy) {
+                this.sections[i].destroy();
+            }
+        }
 
         for (const prop in this) {
             this[prop] = null;

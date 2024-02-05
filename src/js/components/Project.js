@@ -22,7 +22,7 @@ export class Project extends Component {
         this.el = this.nodeList[0];
         this.links = this.el.querySelectorAll('a');
 
-        this.addListeners();
+        this.enable();
     }
 
     render() {
@@ -43,6 +43,10 @@ export class Project extends Component {
         this.links.forEach(el => el.addEventListener('click', this.onClick));
     }
 
+    removeListeners() {
+        this.links.forEach(el => el.removeEventListener('click', this.onClick));
+    }
+
     // Event handlers
 
     onClick = e => {
@@ -50,5 +54,21 @@ export class Project extends Component {
 
         const path = e.currentTarget.getAttribute('href');
         this.setPath(path);
+    };
+
+    // Public methods
+
+    enable = () => {
+        this.addListeners();
+    };
+
+    disable = () => {
+        this.removeListeners();
+    };
+
+    destroy = () => {
+        this.disable();
+
+        return super.destroy();
     };
 }

@@ -44,8 +44,7 @@ export class Figure extends Component {
                 left: -this.movement / 2
             });
 
-            this.addListeners();
-            this.onResize();
+            this.enable();
         }
     }
 
@@ -103,6 +102,11 @@ export class Figure extends Component {
         gsap.ticker.add(this.onUpdate);
     }
 
+    removeListeners() {
+        window.removeEventListener('resize', this.onResize);
+        gsap.ticker.remove(this.onUpdate);
+    }
+
     // Event handlers
 
     onResize = () => {
@@ -154,5 +158,20 @@ export class Figure extends Component {
         // gsap.to(this.el, { y: 0, opacity: 1, duration: 1 });
         // gsap.to(this.el, { opacity: 1, duration: 1 });
         this.el.classList.add('is-loaded');
+    };
+
+    enable = () => {
+        this.addListeners();
+        this.onResize();
+    };
+
+    disable = () => {
+        this.removeListeners();
+    };
+
+    destroy = () => {
+        this.disable();
+
+        return super.destroy();
     };
 }

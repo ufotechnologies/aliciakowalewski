@@ -35,6 +35,12 @@ export class Component {
     animateOut = () => {
     };
 
+    enable = () => {
+    };
+
+    disable = () => {
+    };
+
     destroy() {
         for (const prop in this) {
             this[prop] = null;
