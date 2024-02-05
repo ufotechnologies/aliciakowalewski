@@ -19,7 +19,7 @@ export class Page {
         this.smooth = new Smooth({
             root: document.querySelector('main'),
             container: this.el,
-            // lerpSpeed: 0.075
+            lerpSpeed: 0.075
         });
     }
 
