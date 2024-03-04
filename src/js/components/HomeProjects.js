@@ -24,7 +24,7 @@ export class HomeProjects extends Component {
 
     render() {
         this.nodeList = html(/* html */ `
-            <section class="projects scroll-lazy">
+            <section class="projects lazy">
             </section>
         `);
     }

@@ -18,7 +18,7 @@ router.init({
 });
 
 const assets = [];
-document.querySelectorAll('.scroll-lazy').forEach(el => assets.push(lazyLoad(el)));
+document.querySelectorAll('.lazy').forEach(el => assets.push(lazyLoad(el)));
 
 await Promise.all([
     document.fonts.ready, // Preload fonts

@@ -28,7 +28,7 @@ export class Transition extends Component {
 
         // Fill
         this.fill = {};
-        this.fill.fillStyle = getComputedStyle(document.querySelector(':root')).getPropertyValue('--accent-color');
+        this.fill.fillStyle = getComputedStyle(document.querySelector(':root')).getPropertyValue('--bg-color');
 
         // Points
         this.points = [];

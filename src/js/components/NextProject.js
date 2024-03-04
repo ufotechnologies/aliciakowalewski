@@ -25,10 +25,10 @@ export class NextProject extends Component {
         const { back, next } = this.sectionData;
 
         this.nodeList = html(/* html */ `
-            <nav class="next">
+            <footer class="next">
                 <a href="${basePath}/projects/${back.slug.current}">Back</a>
                 <a href="${basePath}/projects/${next.slug.current}">Next</a>
-            </nav>
+            </footer>
         `);
     }
 

@@ -1,11 +1,9 @@
 import { Component } from './Component.js';
 import { html } from '../utils/html.js';
 
-export class HomeHeading extends Component {
-    constructor(sectionData) {
+export class HomeFooter extends Component {
+    constructor() {
         super();
-
-        this.sectionData = sectionData;
 
         this.init();
     }
@@ -17,12 +15,9 @@ export class HomeHeading extends Component {
     }
 
     render() {
-        const { heading } = this.sectionData;
-
         this.nodeList = html(/* html */ `
-            <section>
-                <h1>${heading}</h1>
-            </section>
+            <footer>
+            </footer>
         `);
     }
 

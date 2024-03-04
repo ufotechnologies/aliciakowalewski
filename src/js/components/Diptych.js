@@ -35,7 +35,7 @@ export class Diptych extends Component {
         const { indent } = this.sectionData;
 
         this.nodeList = html(/* html */ `
-            <figure class="diptych${indent ? ' indent' : ''} scroll-lazy">
+            <figure class="diptych${indent ? ' indent' : ''} lazy">
                 ${this.data.map(({ image, label, caption }) => {
                     const asset = data.get('assets').find(doc => doc._id === image.asset._ref);
                     const src = `${asset.url}?h=${assetHeight}&fit=min&auto=format`;

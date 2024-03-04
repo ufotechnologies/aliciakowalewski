@@ -23,7 +23,10 @@ export class Navigation extends Component {
     render() {
         this.nodeList = html(/* html */ `
             <nav>
-                <a href="${basePath}/" class="eyebrow">${data.get('title')}</a>
+                <a href="${basePath}/">
+                    <img class="logo" src="${basePath}/assets/images/logo.png" alt="Alicia Kowalewski">
+                    <span>${data.get('title')}</span>
+                </a>
                 <a href="${basePath}/about">About</a>
             </nav>
         `);

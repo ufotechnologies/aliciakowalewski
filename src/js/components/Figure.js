@@ -53,7 +53,7 @@ export class Figure extends Component {
 
         if (mp4) {
             this.nodeList = html(/* html */ `
-                <figure class="${indent ? 'indent ' : ''}scroll-lazy${this.parallax ? ' parallax' : ''}">
+                <figure class="${indent ? 'indent ' : ''}lazy${this.parallax ? ' parallax' : ''}">
                     <video autoplay muted loop playsinline src="${mp4}"></video>
                     <figcaption>
                         ${label ? /* html */ `<div><strong>${label}</strong></div>` : ''}
@@ -67,7 +67,7 @@ export class Figure extends Component {
             const width = Math.round(assetHeight * asset.metadata.dimensions.aspectRatio);
 
             this.nodeList = html(/* html */ `
-                <figure class="${indent ? 'indent ' : ''}scroll-lazy${this.parallax ? ' parallax' : ''}">
+                <figure class="${indent ? 'indent ' : ''}lazy${this.parallax ? ' parallax' : ''}">
                     <img src="${src}" width="${width}" height="${assetHeight}">
                     <figcaption>
                         ${label ? /* html */ `<div><strong>${label}</strong></div>` : ''}
@@ -81,7 +81,7 @@ export class Figure extends Component {
             const width = Math.round(assetHeight * asset.metadata.dimensions.aspectRatio);
 
             this.nodeList = html(/* html */ `
-                <figure class="scroll-lazy${this.parallax ? ' parallax' : ''}">
+                <figure class="lazy${this.parallax ? ' parallax' : ''}">
                     <img src="${src}" width="${width}" height="${assetHeight}">
                     <figcaption>
                         ${featuredImage.label ? /* html */ `<div><strong>${featuredImage.label}</strong></div>` : ''}
@@ -91,7 +91,7 @@ export class Figure extends Component {
             `);
         } else {
             this.nodeList = html(/* html */ `
-                <figure class="scroll-lazy${this.parallax ? ' parallax' : ''}">
+                <figure class="lazy${this.parallax ? ' parallax' : ''}">
                 </figure>
             `);
         }

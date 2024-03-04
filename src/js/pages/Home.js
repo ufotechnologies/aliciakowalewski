@@ -1,6 +1,7 @@
 import { Page } from './Page.js';
 import { HomeHeading } from '../components/HomeHeading.js';
 import { HomeProjects } from '../components/HomeProjects.js';
+import { HomeFooter } from '../components/HomeFooter.js';
 import { data } from '../utils/data.js';
 import { observe } from '../utils/observer.js';
 
@@ -48,5 +49,9 @@ export class Home extends Page {
         const projects = new HomeProjects(projectsData);
         this.el.append(projects.el);
         this.sections.push(projects);
+
+        const footer = new HomeFooter();
+        this.el.append(footer.el);
+        this.sections.push(footer);
     }
 }
