@@ -345,6 +345,7 @@ body {
             left: 0;
             top: 0;
             width: 100%;
+            z-index: 1;
 
             > * {
                 display: none;
@@ -360,7 +361,6 @@ body {
         }
 
         section {
-            display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 0;
@@ -375,7 +375,23 @@ body {
 
     &.project {
         nav {
-            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            z-index: 1;
+
+            > * {
+                display: none;
+            }
+
+            a:first-of-type {
+                display: flex;
+
+                span {
+                    display: none;
+                }
+            }
         }
 
         article {
@@ -383,18 +399,36 @@ body {
         }
 
         section {
-            &:first-of-type {
-                position: absolute;
-                gap: 3px;
-                z-index: 1;
-            }
+            margin-bottom: 100px;
 
             h1 {
-                @extend h2;
+                font-family: 'IvyOra Display';
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 31px;
+                letter-spacing: -0.01em;
+
+                span {
+                    display: block;
+                    font-weight: 400;
+                    color: inherit;
+                }
             }
 
             div {
-                @extend h3;
+                font-family: 'IvyOra Display';
+                font-weight: 400;
+                font-size: 24px;
+                line-height: 31px;
+            }
+
+            @media (orientation: landscape) {
+                flex-direction: row;
+                width: 82%;
+
+                h1 {
+                    width: 25%;
+                }
             }
         }
     }

@@ -1,6 +1,6 @@
 import { Page } from './Page.js';
-import { SectionProject } from '../components/SectionProject.js';
 import { Figure } from '../components/Figure.js';
+import { SectionProject } from '../components/SectionProject.js';
 import { NextProject } from '../components/NextProject.js';
 import { basePath } from '../utils/settings.js';
 import { data } from '../utils/data.js';
@@ -24,13 +24,13 @@ export class Article extends Page {
     init() {
         super.init();
 
-        const section = new SectionProject(this.data);
-        this.el.append(section.el);
-        this.sections.push(section);
-
         const figure = new Figure(this.data, true);
         this.el.append(figure.el);
         this.sections.push(figure);
+
+        const section = new SectionProject(this.data);
+        this.el.append(section.el);
+        this.sections.push(section);
 
         super.appendSections();
 
