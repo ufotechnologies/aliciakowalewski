@@ -17,7 +17,7 @@ export class SectionProject extends Component {
     }
 
     render() {
-        const { title, description } = this.sectionData;
+        const { title, tags, description } = this.sectionData;
 
         this.nodeList = html(/* html */ `
             <section>
@@ -25,9 +25,7 @@ export class SectionProject extends Component {
 <h1>
     ${title}
     <span>
-        <br>Creative Direction
-        <br>Layout Design
-        <br>On-set art direction
+        ${tags ? `<br>${tags.join('<br>')}` : ''}
     </span>
 </h1>
 ` : ''}
