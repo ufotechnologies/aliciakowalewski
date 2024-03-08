@@ -177,11 +177,13 @@ h1 {
 h2 {
     font-family: 'IvyOra Display';
     font-weight: 500;
-    font-size: clamp(16px, 4vw, 48px);
-    line-height: 1.3125em;
-    letter-spacing: -0.01em;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: normal;
 
     @media (orientation: landscape) {
+        font-size: clamp(16px, 4vw, 48px);
+        line-height: 1.3125em;
         margin-left: -1px;
     }
 }
@@ -368,7 +370,12 @@ body {
 
             h1 {
                 @extend h2;
-                width: 62%;
+            }
+
+            @media (orientation: landscape) {
+                h1 {
+                    width: 62%;
+                }
             }
         }
     }
@@ -404,8 +411,8 @@ body {
             h1 {
                 font-family: 'IvyOra Display';
                 font-weight: 700;
-                font-size: 24px;
-                line-height: 31px;
+                font-size: 20px;
+                line-height: 26px;
                 letter-spacing: -0.01em;
 
                 span {
@@ -418,8 +425,8 @@ body {
             div {
                 font-family: 'IvyOra Display';
                 font-weight: 400;
-                font-size: 24px;
-                line-height: 31px;
+                font-size: 20px;
+                line-height: 26px;
             }
 
             @media (orientation: landscape) {
@@ -427,10 +434,14 @@ body {
                 width: 82%;
 
                 h1 {
+                    font-size: 24px;
+                    line-height: 31px;
                     width: 25%;
                 }
 
                 div {
+                    font-size: 24px;
+                    line-height: 31px;
                     width: 75%;
                 }
             }
