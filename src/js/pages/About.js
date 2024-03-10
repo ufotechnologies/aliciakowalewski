@@ -1,4 +1,5 @@
 import { Page } from './Page.js';
+import { Navigation } from '../components/Navigation.js';
 import { Section } from '../components/Section.js';
 import { Figure } from '../components/Figure.js';
 import { Project } from '../components/Project.js';
@@ -20,6 +21,11 @@ export class About extends Page {
 
     init() {
         super.init();
+
+        const navigation = new Navigation();
+        this.el.prepend(navigation.el);
+        this.sections.push(navigation);
+
         this.appendSections();
 
         this.sections.forEach(section => observe(section.el, section));
@@ -33,21 +39,21 @@ export class About extends Page {
         this.data.sections.forEach(data => {
             if (data._type === 'section') {
                 const section = new Section(data);
-                this.el.append(section.el);
+                this.article.append(section.el);
                 this.sections.push(section);
                 return;
             }
 
             if (data._type === 'figure') {
                 const figure = new Figure(data);
-                this.el.append(figure.el);
+                this.article.append(figure.el);
                 this.sections.push(figure);
                 return;
             }
 
             if (data._type === 'project') {
                 const project = new Project(data);
-                this.el.append(project.el);
+                this.article.append(project.el);
                 this.sections.push(project);
                 return;
             }

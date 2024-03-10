@@ -3,7 +3,7 @@ import { basePath } from '../utils/settings.js';
 import { router } from '../utils/router.js';
 import { html } from '../utils/html.js';
 
-export class NextProject extends Component {
+export class Footer extends Component {
     constructor(sectionData) {
         super();
 
@@ -27,6 +27,9 @@ export class NextProject extends Component {
         this.nodeList = html(/* html */ `
             <footer class="next">
                 <a href="${basePath}/projects/${back.slug.current}">Back</a>
+                <a href="${basePath}/">
+                    <img class="logo" src="${basePath}/assets/images/logo.png" alt="Alicia Kowalewski">
+                </a>
                 <a href="${basePath}/projects/${next.slug.current}">Next</a>
             </footer>
         `);
@@ -42,7 +45,12 @@ export class NextProject extends Component {
         e.preventDefault();
 
         const path = e.currentTarget.getAttribute('href');
-        router.setPath(path);
+
+        if (path === location.pathname) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            router.setPath(path);
+        }
     };
 
     // Public methods

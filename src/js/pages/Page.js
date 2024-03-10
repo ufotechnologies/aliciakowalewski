@@ -1,4 +1,4 @@
-import { Navigation } from '../components/Navigation.js';
+import { Component } from '../components/Component.js';
 import { Section } from '../components/Section.js';
 import { Figure } from '../components/Figure.js';
 import { Diptych } from '../components/Diptych.js';
@@ -6,19 +6,16 @@ import { Project } from '../components/Project.js';
 import { Smooth } from '../components/Smooth.js';
 import { html } from '../utils/html.js';
 
-export class Page {
+export class Page extends Component {
     init() {
         this.render();
 
         this.el = this.nodeList[0];
-
-        const navigation = new Navigation();
-        this.el.append(navigation.el);
-        this.sections.push(navigation);
+        this.article = this.el.querySelector('article');
 
         this.smooth = new Smooth({
-            root: document.querySelector('main'),
-            container: this.el,
+            root: document.querySelector('.page'),
+            container: this.article,
             lerpSpeed: 0.075
         });
     }
@@ -31,28 +28,28 @@ export class Page {
         this.data.sections.forEach(data => {
             if (data._type === 'section') {
                 const section = new Section(data);
-                this.el.append(section.el);
+                this.article.append(section.el);
                 this.sections.push(section);
                 return;
             }
 
             if (data._type === 'figure') {
                 const figure = new Figure(data);
-                this.el.append(figure.el);
+                this.article.append(figure.el);
                 this.sections.push(figure);
                 return;
             }
 
             if (data._type === 'diptych') {
                 const diptych = new Diptych(data);
-                this.el.append(diptych.el);
+                this.article.append(diptych.el);
                 this.sections.push(diptych);
                 return;
             }
 
             if (data._type === 'project') {
                 const project = new Project(data);
-                this.el.append(project.el);
+                this.article.append(project.el);
                 this.sections.push(project);
                 return;
             }
@@ -61,7 +58,9 @@ export class Page {
 
     render() {
         this.nodeList = html(/* html */ `
-            <article></article>
+            <main>
+                <article></article>
+            </main>
         `);
     }
 
@@ -102,10 +101,6 @@ export class Page {
             }
         }
 
-        for (const prop in this) {
-            this[prop] = null;
-        }
-
-        return null;
+        return super.destroy();
     }
 }

@@ -1,7 +1,8 @@
 import { Page } from './Page.js';
+import { Navigation } from '../components/Navigation.js';
 import { Figure } from '../components/Figure.js';
 import { SectionProject } from '../components/SectionProject.js';
-import { NextProject } from '../components/NextProject.js';
+import { Footer } from '../components/Footer.js';
 import { basePath } from '../utils/settings.js';
 import { data } from '../utils/data.js';
 import { observe } from '../utils/observer.js';
@@ -24,12 +25,16 @@ export class Article extends Page {
     init() {
         super.init();
 
+        const navigation = new Navigation();
+        this.el.prepend(navigation.el);
+        this.sections.push(navigation);
+
         const figure = new Figure(this.data, true);
-        this.el.append(figure.el);
+        this.article.append(figure.el);
         this.sections.push(figure);
 
         const section = new SectionProject(this.data);
-        this.el.append(section.el);
+        this.article.append(section.el);
         this.sections.push(section);
 
         super.appendSections();
@@ -51,9 +56,9 @@ export class Article extends Page {
             next: this.articles[nextIndex]
         };
 
-        const next = new NextProject(data);
-        this.el.append(next.el);
-        this.sections.push(next);
+        const footer = new Footer(data);
+        this.article.append(footer.el);
+        this.sections.push(footer);
 
         this.sections.forEach(section => observe(section.el, section));
     }

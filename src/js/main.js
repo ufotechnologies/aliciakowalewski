@@ -13,7 +13,7 @@ router.add('/about', About);
 router.add('/projects', Article);
 router.init({
     path: basePath,
-    page: document.querySelector('article'),
+    page: document.querySelector('main'),
     transition: new Transition()
 });
 

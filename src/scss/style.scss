@@ -197,16 +197,15 @@ h3 {
     }
 }
 
-article {
-    max-width: 1800px;
-    margin: 0 auto;
-    background-color: var(--page-color);
+main {
 }
 
 nav, footer {
     display: flex;
     justify-content: space-between;
-    padding: 25px;
+    align-items: center;
+    height: 80px;
+    padding: 0 25px;
     font-family: var(--ui-font-family);
     font-weight: 600;
     font-size: 14px;
@@ -221,8 +220,23 @@ nav, footer {
     }
 
     @media (orientation: landscape) {
-        padding: 50px;
+        height: 130px;
+        padding: 0 50px;
     }
+}
+
+nav {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+article {
+    max-width: 1800px;
+    margin: 0 auto;
+    background-color: var(--page-color);
 }
 
 section {
@@ -230,7 +244,7 @@ section {
     flex-direction: column;
     gap: 32px;
     max-width: 1800px;
-    margin: 25px auto 0;
+    margin: 25px auto;
     padding: 0 25px;
 
     svg {
@@ -240,7 +254,7 @@ section {
 
     @media (orientation: landscape) {
         gap: 32px;
-        margin: 50px auto 0;
+        margin: 50px auto;
         padding: 0 50px;
     }
 }
@@ -248,8 +262,12 @@ section {
 figure {
     line-height: 0;
     max-width: 1800px;
-    margin: 25px auto 0;
+    margin: 25px auto;
     padding: 0 25px;
+
+    &:first-child {
+        margin-top: 0;
+    }
 
     &:first-of-type {
         margin: 0;
@@ -270,10 +288,6 @@ figure {
         }
     }
 
-    &:first-child {
-        margin-top: 0;
-    }
-
     &.indent {
         width: 80%;
     }
@@ -287,14 +301,12 @@ figure {
     }
 
     @media (orientation: landscape) {
-        margin: 50px auto 0;
+        margin: 50px auto;
         padding: 0 50px;
     }
 }
 
 footer {
-    margin-top: 25px;
-    height: 200px;
     background-color: var(--bg-color);
 
     a {
@@ -304,20 +316,24 @@ footer {
             color: #ffffff;
         }
     }
-
-    @media (orientation: landscape) {
-        margin-top: 50px;
-    }
 }
 
 body {
     &.home {
+        article {
+            padding-top: 80px;
+
+            @media (orientation: landscape) {
+                padding-top: 130px;
+            }
+        }
+
         section {
             &.projects {
                 flex-wrap: wrap;
                 flex-direction: row;
                 gap: 5%;
-                margin: 85px auto 0;
+                margin: 85px auto 25px;
 
                 figure {
                     margin: 0;
@@ -331,7 +347,7 @@ body {
                 }
 
                 @media (orientation: landscape) {
-                    margin: 85px auto 0;
+                    margin: 85px auto 50px;
 
                     figure {
                         width: 21.2%;
@@ -343,12 +359,6 @@ body {
 
     &.about {
         nav {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            z-index: 1;
-
             > * {
                 display: none;
             }
@@ -360,12 +370,16 @@ body {
                     display: none;
                 }
             }
+
+            @media (orientation: landscape) {
+                position: fixed;
+            }
         }
 
         section {
             justify-content: center;
             align-items: center;
-            margin-top: 0;
+            margin: 0;
             height: 100vh;
 
             h1 {
@@ -374,7 +388,7 @@ body {
 
             @media (orientation: landscape) {
                 h1 {
-                    width: 62%;
+                    width: 70%;
                 }
             }
         }
@@ -382,12 +396,6 @@ body {
 
     &.project {
         nav {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            z-index: 1;
-
             > * {
                 display: none;
             }
@@ -399,14 +407,14 @@ body {
                     display: none;
                 }
             }
-        }
 
-        article {
-            padding-top: 0;
+            @media (orientation: landscape) {
+                position: fixed;
+            }
         }
 
         section {
-            margin-bottom: 120px;
+            margin-bottom: 80px;
 
             h1 {
                 font-family: 'IvyOra Display';
@@ -432,6 +440,7 @@ body {
             @media (orientation: landscape) {
                 flex-direction: row;
                 width: 82%;
+                margin-bottom: 130px;
 
                 h1 {
                     font-size: 24px;

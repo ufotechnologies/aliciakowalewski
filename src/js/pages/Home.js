@@ -1,7 +1,8 @@
 import { Page } from './Page.js';
+import { Navigation } from '../components/Navigation.js';
 import { HomeHeading } from '../components/HomeHeading.js';
 import { HomeProjects } from '../components/HomeProjects.js';
-import { HomeFooter } from '../components/HomeFooter.js';
+import { Footer } from '../components/Footer.js';
 import { data } from '../utils/data.js';
 import { observe } from '../utils/observer.js';
 
@@ -10,6 +11,7 @@ export class Home extends Page {
         super();
 
         this.data = data.get('home');
+        this.articles = data.get('articles');
         this.sections = [];
 
         document.body.className = 'home';
@@ -20,6 +22,11 @@ export class Home extends Page {
 
     init() {
         super.init();
+
+        const navigation = new Navigation();
+        this.article.prepend(navigation.el);
+        this.sections.push(navigation);
+
         this.appendSections();
 
         this.sections.forEach(section => observe(section.el, section));
@@ -34,7 +41,7 @@ export class Home extends Page {
         const data = sections.shift();
 
         const heading = new HomeHeading(data);
-        this.el.append(heading.el);
+        this.article.append(heading.el);
         this.sections.push(heading);
 
         const projectsData = [];
@@ -47,11 +54,17 @@ export class Home extends Page {
         });
 
         const projects = new HomeProjects(projectsData);
-        this.el.append(projects.el);
+        this.article.append(projects.el);
         this.sections.push(projects);
 
-        const footer = new HomeFooter();
-        this.el.append(footer.el);
+        const prevIndex = projectsData.length - 1;
+        const nextIndex = 0;
+
+        const footer = new Footer({
+            back: this.articles.find(doc => doc._id === projectsData[prevIndex]._ref),
+            next: this.articles.find(doc => doc._id === projectsData[nextIndex]._ref)
+        });
+        this.article.append(footer.el);
         this.sections.push(footer);
     }
 }
