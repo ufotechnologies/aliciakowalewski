@@ -39,24 +39,24 @@ export class Article extends Page {
 
         super.appendSections();
 
-        const index = this.articles.findIndex(doc => doc._id === this.data._id);
+        // Get back and next projects
+        const projects = data.get('projects')
+        const index = projects.findIndex(doc => doc._id === this.data._id);
         let prevIndex = index;
         let nextIndex = index;
 
         if (--prevIndex < 0) {
-            prevIndex = this.articles.length - 1;
+            prevIndex = projects.length - 1;
         }
 
-        if (++nextIndex > this.articles.length - 1) {
+        if (++nextIndex > projects.length - 1) {
             nextIndex = 0;
         }
 
-        const data = {
-            back: this.articles[prevIndex],
-            next: this.articles[nextIndex]
-        };
-
-        const footer = new Footer(data);
+        const footer = new Footer({
+            back: projects[prevIndex],
+            next: projects[nextIndex]
+        });
         this.article.append(footer.el);
         this.sections.push(footer);
 

@@ -11,7 +11,6 @@ export class Home extends Page {
         super();
 
         this.data = data.get('home');
-        this.articles = data.get('articles');
         this.sections = [];
 
         document.body.className = 'home';
@@ -29,6 +28,16 @@ export class Home extends Page {
 
         this.appendSections();
 
+        // Get back and next projects
+        const projects = data.get('projects')
+
+        const footer = new Footer({
+            back: projects[projects.length - 1],
+            next: projects[0]
+        });
+        this.article.append(footer.el);
+        this.sections.push(footer);
+
         this.sections.forEach(section => observe(section.el, section));
     }
 
@@ -37,34 +46,12 @@ export class Home extends Page {
             return;
         }
 
-        const sections = this.data.sections.slice();
-        const data = sections.shift();
-
-        const heading = new HomeHeading(data);
+        const heading = new HomeHeading(this.data.sections[0]);
         this.article.append(heading.el);
         this.sections.push(heading);
 
-        const projectsData = [];
-
-        sections.forEach(data => {
-            if (data._type === 'project') {
-                projectsData.push(data);
-                return;
-            }
-        });
-
-        const projects = new HomeProjects(projectsData);
+        const projects = new HomeProjects();
         this.article.append(projects.el);
         this.sections.push(projects);
-
-        const prevIndex = projectsData.length - 1;
-        const nextIndex = 0;
-
-        const footer = new Footer({
-            back: this.articles.find(doc => doc._id === projectsData[prevIndex]._ref),
-            next: this.articles.find(doc => doc._id === projectsData[nextIndex]._ref)
-        });
-        this.article.append(footer.el);
-        this.sections.push(footer);
     }
 }

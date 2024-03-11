@@ -44,6 +44,7 @@ export async function loadData() {
         data.set('shareImage', assets.find(doc => doc._id === settings.shareImage?.asset._ref)?.url);
         data.set('settings', settings);
         data.set('home', home);
+        data.set('projects', home.sections.filter(data => data._type === 'project').map(data => articles.find(doc => doc._id === data._ref)));
         data.set('about', about);
         data.set('articles', articles);
         data.set('assets', assets);
