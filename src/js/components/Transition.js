@@ -21,6 +21,7 @@ export class Transition extends Component {
         this.canvas = this.el.querySelector('canvas');
         this.context = this.canvas.getContext('2d');
 
+        this.first = true;
         this.progress = 0;
         this.bend = 0;
         this.animatedIn = false;
@@ -118,45 +119,59 @@ export class Transition extends Component {
     // Public methods
 
     animateIn = callback => {
-        gsap.killTweensOf(this);
-
-        this.progress = 0;
-        this.bend = 0;
-        this.animatedIn = false;
-        this.needsUpdate = true;
-
-        gsap.to(this, { progress: 1, duration: 1.25, ease: 'power3.inOut', onComplete: () => {
-            this.needsUpdate = false;
-
+        if (this.first) {
             if (callback) {
                 callback();
             }
-        } });
+        } else {
+            gsap.killTweensOf(this);
 
-        gsap.to(this, { bend: 1, duration: 0.5, ease: 'linear', onComplete: () => {
-            gsap.to(this, { bend: 0, duration: 0.5, ease: 'linear' });
-        } });
+            this.progress = 0;
+            this.bend = 0;
+            this.animatedIn = false;
+            this.needsUpdate = true;
+
+            gsap.to(this, { progress: 1, duration: 1.25, ease: 'power3.inOut', onComplete: () => {
+                this.needsUpdate = false;
+
+                if (callback) {
+                    callback();
+                }
+            } });
+
+            gsap.to(this, { bend: 1, duration: 0.5, ease: 'linear', onComplete: () => {
+                gsap.to(this, { bend: 0, duration: 0.5, ease: 'linear' });
+            } });
+        }
     };
 
     animateOut = callback => {
-        gsap.killTweensOf(this);
-
-        this.progress = 0;
-        this.bend = 0;
-        this.animatedIn = true;
-        this.needsUpdate = true;
-
-        gsap.to(this, { progress: 1, duration: 1.25, ease: 'power3.inOut', onComplete: () => {
-            this.needsUpdate = false;
-            this.animatedIn = false;
+        if (this.first) {
+            this.first = false;
 
             if (callback) {
                 callback();
             }
-        } });
+        } else {
+            gsap.killTweensOf(this);
 
-        gsap.to(this, { bend: 1, duration: 0.5, ease: 'linear', onComplete: () => {
-            gsap.to(this, { bend: 0, duration: 0.5, ease: 'linear' });
-        } });
+            this.progress = 0;
+            this.bend = 0;
+            this.animatedIn = true;
+            this.needsUpdate = true;
+
+            gsap.to(this, { progress: 1, duration: 1.25, ease: 'power3.inOut', onComplete: () => {
+                this.needsUpdate = false;
+                this.animatedIn = false;
+
+                if (callback) {
+                    callback();
+                }
+            } });
+
+            gsap.to(this, { bend: 1, duration: 0.5, ease: 'linear', onComplete: () => {
+                gsap.to(this, { bend: 0, duration: 0.5, ease: 'linear' });
+            } });
+        }
     };
 }

@@ -46,7 +46,9 @@ routes.result.forEach(page => {
         </main>
     </div>
     <div class="transition"></div>
-    <div class="preloader"></div>
+    <div class="preloader">
+        <img src="${routes.settings.shareImage}" width="1200" height="630">
+    </div>
 </body>
 </html>
 `
