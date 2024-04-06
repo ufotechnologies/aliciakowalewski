@@ -45,8 +45,29 @@ export default {
           name: 'layers',
           type: 'array',
           title: 'Layers',
-          of: [{name: 'parallaxImage', type: 'image', title: 'Parallax image'}]
-        },
+          of: [
+            {
+              name: 'parallaxImage',
+              type: 'object',
+              title: 'Parallax Image',
+              fields: [
+                {name: 'image', type: 'image', title: 'Image'}
+              ],
+              preview: {
+                select: {
+                  media: 'image'
+                },
+                prepare(selection) {
+                  const {media} = selection
+                  return {
+                    title: 'Parallax image',
+                    media: media
+                  }
+                }
+              }
+            }
+          ]
+        }
       ],
       preview: {
         select: {
