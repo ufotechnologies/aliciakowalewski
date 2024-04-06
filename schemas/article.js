@@ -86,13 +86,15 @@ export default {
               title: 'name',
               label: 'label',
               caption: 'caption',
-              indent: 'indent'
+              indent: 'indent',
+              media: 'image'
             },
             prepare(selection) {
-              const {title, label, caption, indent} = selection
+              const {title, label, caption, indent, media} = selection
               return {
                 title: title || label || caption,
-                subtitle: indent ? 'Indented' : ''
+                subtitle: indent ? 'Indented' : '',
+                media: media
               }
             }
           }
@@ -120,13 +122,17 @@ export default {
           preview: {
             select: {
               title: 'name',
-              indent: 'indent'
+              label: 'label1',
+              caption: 'caption1',
+              indent: 'indent',
+              media: 'image1'
             },
             prepare(selection) {
-              const {title, indent} = selection
+              const {title, label, caption, indent, media} = selection
               return {
-                title: title,
-                subtitle: indent ? 'Indented' : ''
+                title: title || label || caption,
+                subtitle: indent ? 'Indented' : '',
+                media: media
               }
             }
           }
