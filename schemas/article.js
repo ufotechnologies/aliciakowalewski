@@ -134,6 +134,49 @@ export default {
               }
             }
           }
+        },
+        {
+          name: 'slider',
+          type: 'object',
+          title: 'Slider',
+          fields: [
+            {name: 'name', type: 'string', title: 'Name'},
+            {
+              name: 'images',
+              type: 'array',
+              title: 'Images',
+              of: [
+                {
+                  name: 'figure',
+                  type: 'object',
+                  title: 'Image/Video',
+                  fields: [
+                    {name: 'name', type: 'string', title: 'Name'},
+                    {name: 'image', type: 'image', title: 'Image'},
+                    {name: 'label', type: 'string', title: 'Label'},
+                    {name: 'caption', type: 'string', title: 'Caption'},
+                    {name: 'mp4', type: 'string', title: 'MP4 link'},
+                    {name: 'link', type: 'string', title: 'Link'}
+                  ],
+                  preview: {
+                    select: {
+                      title: 'name',
+                      label: 'label',
+                      caption: 'caption',
+                      media: 'image'
+                    },
+                    prepare(selection) {
+                      const {title, label, caption, media} = selection
+                      return {
+                        title: title || label || caption,
+                        media: media
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+          ]
         }
       ]
     }
