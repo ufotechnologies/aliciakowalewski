@@ -41,8 +41,12 @@ export default {
       title: 'Featured Image',
       fields: [
         {name: 'image', type: 'image', title: 'Image'},
-        {name: 'label', type: 'string', title: 'Label'},
-        {name: 'caption', type: 'string', title: 'Caption'}
+        {
+          name: 'layers',
+          type: 'array',
+          title: 'Layers',
+          of: [{name: 'parallaxImage', type: 'image', title: 'Parallax image'}]
+        },
       ],
       preview: {
         select: {
@@ -56,12 +60,6 @@ export default {
           }
         }
       }
-    },
-    {
-      name: 'layers',
-      type: 'array',
-      title: 'Layers',
-      of: [{name: 'parallaxImage', type: 'image', title: 'Parallax image'}]
     },
     {
       name: 'sections',
