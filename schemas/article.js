@@ -176,7 +176,21 @@ export default {
                 }
               ]
             },
-          ]
+          ],
+          preview: {
+            select: {
+              title: 'name',
+              media: 'images[0].image'
+            },
+            prepare(selection) {
+              const {title, media} = selection
+              return {
+                title: title,
+                subtitle: 'Slider',
+                media: media
+              }
+            }
+          }
         }
       ]
     }
@@ -184,7 +198,6 @@ export default {
   preview: {
     select: {
       title: 'name',
-      subtitle: 'location',
       media: 'featuredImage.image'
     }
   }
