@@ -91,7 +91,7 @@ export default {
               const {title, label, caption, indent, media} = selection
               return {
                 title: title || label || caption,
-                subtitle: indent ? 'Indented' : '',
+                subtitle: indent ? 'Indented' : 'Full width',
                 media: media
               }
             }
@@ -129,7 +129,7 @@ export default {
               const {title, label, caption, indent, media} = selection
               return {
                 title: title || label || caption,
-                subtitle: indent ? 'Indented' : '',
+                subtitle: indent ? 'Indented' : 'Full width',
                 media: media
               }
             }
