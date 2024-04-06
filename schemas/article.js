@@ -36,6 +36,14 @@ export default {
       title: 'Description'
     },
     {
+      name: 'thumbnailImage',
+      type: 'object',
+      title: 'Thumbnail Image',
+      fields: [
+        {name: 'image', type: 'image', title: 'Image'}
+      ]
+    },
+    {
       name: 'featuredImage',
       type: 'object',
       title: 'Featured Image',
@@ -68,19 +76,7 @@ export default {
             }
           ]
         }
-      ],
-      preview: {
-        select: {
-          title: 'label',
-          caption: 'caption'
-        },
-        prepare(selection) {
-          const {title, caption} = selection
-          return {
-            title: title || caption
-          }
-        }
-      }
+      ]
     },
     {
       name: 'sections',
@@ -219,7 +215,15 @@ export default {
   preview: {
     select: {
       title: 'name',
-      media: 'featuredImage.image'
+      thumbnailImage: 'thumbnailImage.image',
+      featuredImage: 'featuredImage.image'
+    },
+    prepare(selection) {
+      const {title, thumbnailImage, featuredImage} = selection
+      return {
+        title: title,
+        media: thumbnailImage || featuredImage
+      }
     }
   }
 }
