@@ -58,6 +58,12 @@ export default {
       }
     },
     {
+      name: 'layers',
+      type: 'array',
+      title: 'Layers',
+      of: [{name: 'parallaxImage', type: 'image', title: 'Parallax image'}]
+    },
+    {
       name: 'sections',
       type: 'array',
       title: 'Sections',
