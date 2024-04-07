@@ -47,6 +47,15 @@ export class Page extends Component {
                 return;
             }
 
+            if (data._type === 'slider') {
+                data.images.forEach(data => {
+                    const figure = new Figure(data);
+                    this.article.append(figure.el);
+                    this.sections.push(figure);
+                });
+                return;
+            }
+
             if (data._type === 'project') {
                 const project = new Project(data);
                 this.article.append(project.el);
