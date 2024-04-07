@@ -27,9 +27,10 @@ export class Project extends Component {
     }
 
     render() {
-        const { slug, featuredImage } = this.sectionData;
+        const { slug, thumbnailImage, featuredImage } = this.sectionData;
 
-        const asset = data.get('assets').find(doc => doc._id === featuredImage.image.asset._ref);
+        const image = (thumbnailImage || featuredImage).image;
+        const asset = data.get('assets').find(doc => doc._id === image.asset._ref);
         const src = `${asset.url}?h=${assetHeight}&fit=min&auto=format`;
         const width = assetHeight * asset.metadata.dimensions.aspectRatio;
 
