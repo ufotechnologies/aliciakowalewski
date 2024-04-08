@@ -20,8 +20,8 @@ router.init({
 const assets = [];
 document.querySelectorAll('.lazy').forEach(el => assets.push(lazyLoad(el)));
 
-await Promise.all([
+/* await Promise.all([
     document.fonts.ready, // Preload fonts
     ...assets
-]);
+]); */
 document.documentElement.classList.add('is-loaded');
