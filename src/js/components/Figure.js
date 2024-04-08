@@ -68,7 +68,7 @@ export class Figure extends Component {
 
             this.nodeList = html(/* html */ `
                 <figure class="${indent ? 'indent ' : ''}lazy${this.parallax ? ' parallax' : ''}">
-                    <img src="${src}" width="${width}" height="${assetHeight}">
+                    <img src="${src}" width="${width}" height="${assetHeight}"${this.parallax ? ' fetchpriority="high"' : ''}>
                     <figcaption>
                         ${label ? /* html */ `<div><strong>${label}</strong></div>` : ''}
                         ${caption ? /* html */ `<div>${caption}</div>` : ''}
@@ -82,7 +82,7 @@ export class Figure extends Component {
 
             this.nodeList = html(/* html */ `
                 <figure class="lazy${this.parallax ? ' parallax' : ''}">
-                    <img src="${src}" width="${width}" height="${assetHeight}">
+                    <img src="${src}" width="${width}" height="${assetHeight}" fetchpriority="high">
                     <figcaption>
                         ${featuredImage.label ? /* html */ `<div><strong>${featuredImage.label}</strong></div>` : ''}
                         ${featuredImage.caption ? /* html */ `<div>${featuredImage.caption}</div>` : ''}
