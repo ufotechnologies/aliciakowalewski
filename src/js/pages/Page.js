@@ -2,6 +2,7 @@ import { Component } from '../components/Component.js';
 import { Section } from '../components/Section.js';
 import { Figure } from '../components/Figure.js';
 import { Diptych } from '../components/Diptych.js';
+import { Slider } from '../components/Slider.js';
 import { Project } from '../components/Project.js';
 import { Smooth } from '../components/Smooth.js';
 import { html } from '../utils/html.js';
@@ -48,11 +49,9 @@ export class Page extends Component {
             }
 
             if (data._type === 'slider') {
-                data.images.forEach(data => {
-                    const figure = new Figure(data);
-                    this.article.append(figure.el);
-                    this.sections.push(figure);
-                });
+                const slider = new Slider(data);
+                this.article.append(slider.el);
+                this.sections.push(slider);
                 return;
             }
 

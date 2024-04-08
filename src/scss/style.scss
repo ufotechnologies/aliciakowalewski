@@ -445,6 +445,31 @@ body {
                 line-height: 26px;
             }
 
+            &.slider {
+                .slider-wrapper {
+                    position: relative;
+                    aspect-ratio: 1.5;
+
+                    .slider-container {
+                        position: absolute;
+                        display: flex;
+                        gap: 25px;
+                        width: calc(100vw - 25px);
+                        height: 100%;
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                        scrollbar-width: none;
+
+                        figure {
+                            aspect-ratio: 1.45;
+                            margin: 0;
+                            padding: 0;
+                            pointer-events: none;
+                        }
+                    }
+                }
+            }
+
             @media (orientation: landscape) {
                 flex-direction: row;
                 width: 82%;
@@ -460,6 +485,19 @@ body {
                     font-size: 24px;
                     line-height: 31px;
                     width: 75%;
+                }
+
+                &.slider {
+                    width: 80%;
+
+                    .slider-wrapper {
+                        aspect-ratio: 1.45;
+
+                        .slider-container {
+                            gap: 100px;
+                            width: calc(100vw - 10%);
+                        }
+                    }
                 }
             }
         }
