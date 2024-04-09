@@ -469,6 +469,7 @@ body {
                         gap: 25px;
                         width: calc(100vw - 25px);
                         height: 100%;
+                        padding-right: 25px;
                         overflow-y: hidden;
                         overflow-x: auto;
                         scrollbar-width: none;
@@ -514,7 +515,8 @@ body {
 
                         .slider-container {
                             gap: 100px;
-                            width: calc(100vw - 10%);
+                            width: calc(90vw - 50px);
+                            padding-right: 100px;
                         }
                     }
                 }
