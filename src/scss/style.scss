@@ -160,6 +160,7 @@ strong, .active {
 // https://stackoverflow.com/questions/5697067/css-for-grabbing-cursors-drag-drop/18294634#18294634
 .grabbable {
     cursor: grab;
+    -webkit-user-select: none;
     user-select: none;
 
     &:active {
