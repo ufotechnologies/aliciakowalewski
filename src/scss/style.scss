@@ -127,6 +127,10 @@ strong, .active {
 .is-loaded {
     .preloader {
         top: 100vh;
+
+        @supports (top: 100lvh) {
+            top: 100lvh;
+        }
     }
 }
 
