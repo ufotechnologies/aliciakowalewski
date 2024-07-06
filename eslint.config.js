@@ -1,14 +1,9 @@
 import globals from 'globals';
 import js from '@eslint/js';
-import html from 'eslint-plugin-html';
 
 export default [
   js.configs.recommended,
   {
-    files: ['**/*.js', '**/*.html'],
-    plugins: {
-      html
-    },
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
