@@ -29,7 +29,7 @@ export class Home extends Page {
         this.appendSections();
 
         // Get back and next projects
-        const projects = data.get('projects')
+        const projects = data.get('projects');
 
         const footer = new Footer({
             back: projects[projects.length - 1],

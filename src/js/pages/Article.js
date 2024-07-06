@@ -40,7 +40,7 @@ export class Article extends Page {
         super.appendSections();
 
         // Get back and next projects
-        const projects = data.get('projects')
+        const projects = data.get('projects');
         const index = projects.findIndex(doc => doc._id === this.data._id);
         let prevIndex = index;
         let nextIndex = index;

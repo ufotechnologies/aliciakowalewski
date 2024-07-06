@@ -1,4 +1,4 @@
-import { lazyLoad } from './lazyLoad.js';
+// import { lazyLoad } from './lazyLoad.js';
 
 export const observer = new IntersectionObserver(onIntersect);
 export const observerMap = new Map();
