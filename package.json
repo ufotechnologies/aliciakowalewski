@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "npm run generate && sass src/scss:public/assets/css --embed-source-map && concurrently --names \"ROLLUP,SASS,HTTP\" -c \"bgBlue.bold,bgMagenta.bold,bgGreen.bold\" \"rollup -c -w -m inline\" \"sass src/scss:public/assets/css --embed-source-map --watch\" \"servez public\"",
-    "build": "rollup -c && sass src/scss:public/assets/css --no-source-map --style compressed",
-    "generate": "npm run build && node ./routes && node ./render",
+    "dev": "npm run generate && concurrently --names \"ROLLUP,SASS,HTTP\" -c \"bgBlue.bold,bgMagenta.bold,bgGreen.bold\" \"rollup -c -w -m inline\" \"sass src/scss:public/assets/css --embed-source-map --watch\" \"servez public\"",
+    "build": "npm run generate && rollup -c && sass src/scss:public/assets/css --no-source-map --style compressed",
+    "generate": "node ./routes && node ./render",
     "start": "servez public"
   },
   "dependencies": {
