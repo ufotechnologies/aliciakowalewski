@@ -298,7 +298,6 @@ figure {
     line-height: 0;
     max-width: 1800px;
     margin: 25px auto;
-    padding: 0 25px;
 
     &:first-child {
         margin-top: 0;
@@ -333,7 +332,6 @@ figure {
 
     @media (orientation: landscape) {
         margin: 50px auto;
-        padding: 0 50px;
 
         &.indent {
             width: 80%;
