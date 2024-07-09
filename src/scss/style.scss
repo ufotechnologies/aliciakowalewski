@@ -368,7 +368,7 @@ body {
                 flex-wrap: wrap;
                 flex-direction: row;
                 gap: 5%;
-                margin: 85px auto 25px;
+                margin: 85px auto 10px;
 
                 figure {
                     margin: 0;
@@ -382,7 +382,7 @@ body {
                 }
 
                 @media (orientation: landscape) {
-                    margin: 85px auto 50px;
+                    margin: 85px auto 5px;
 
                     figure {
                         width: 21.2%;
