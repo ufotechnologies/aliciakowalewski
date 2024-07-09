@@ -25,7 +25,7 @@ export class SectionProject extends Component {
 <h1>
     ${title}
     <span>
-        ${tags ? `<br>${tags.join('<br>')}` : ''}
+        ${tags ? `${tags.join('<br>')}` : ''}
     </span>
 </h1>
 ` : ''}
