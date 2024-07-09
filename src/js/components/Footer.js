@@ -27,7 +27,7 @@ export class Footer extends Component {
         this.nodeList = html(/* html */ `
             <footer class="next">
                 <a href="${basePath}/projects/${back.slug.current}">Back</a>
-                <a href="${basePath}/">
+                <a href="${basePath}/" class="mobile-only">
                     <img class="logo" src="${basePath}/assets/images/logo.png" alt="Alicia Kowalewski">
                 </a>
                 <a href="${basePath}/projects/${next.slug.current}">Next</a>
