@@ -1,5 +1,5 @@
 import { Component } from './Component.js';
-import { assetHeight } from '../utils/settings.js';
+import { assetSize } from '../utils/settings.js';
 import { data } from '../utils/data.js';
 import { html } from '../utils/html.js';
 
@@ -38,12 +38,14 @@ export class Diptych extends Component {
             <figure class="diptych${indent ? ' indent' : ''} lazy">
                 ${this.data.map(({ image, label, caption }) => {
                     const asset = data.get('assets').find(doc => doc._id === image.asset._ref);
-                    const src = `${asset.url}?h=${assetHeight}&fit=min&auto=format`;
-                    const width = Math.round(assetHeight * asset.metadata.dimensions.aspectRatio);
+                    const dimensions = asset.metadata.dimensions.aspectRatio > 1 ? `h=${assetSize}` : `w=${assetSize}`;
+                    const src = `${asset.url}?${dimensions}&fit=min&auto=format`;
+                    const width = asset.metadata.dimensions.aspectRatio > 1 ? Math.round(assetSize * asset.metadata.dimensions.aspectRatio) : assetSize;
+                    const height = asset.metadata.dimensions.aspectRatio > 1 ? assetSize : Math.round(assetSize / asset.metadata.dimensions.aspectRatio);
 
                     return /* html */ `
                         <div class="image">
-                            <img src="${src}" width="${width}" height="${assetHeight}">
+                            <img src="${src}" width="${width}" height="${height}">
                             <figcaption>
                                 ${label ? /* html */ `<div><strong>${label}</strong></div>` : ''}
                                 ${caption ? /* html */ `<div>${caption}</div>` : ''}
