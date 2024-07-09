@@ -322,6 +322,10 @@ figure {
         }
     }
 
+    &.indent {
+        padding: 0 25px;
+    }
+
     &.diptych {
         display: flex;
 
