@@ -1,2 +1,2 @@
 export const basePath = '';
-export const assetSize = 1440;
+export const assetSize = 1600;
