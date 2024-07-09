@@ -102,6 +102,18 @@ strong, .active {
     font-weight: 700;
 }
 
+.mobile-only {
+    @media (orientation: landscape) {
+        display: none;
+    }
+}
+
+.desktop-only {
+    @media (orientation: portrait) {
+        display: none;
+    }
+}
+
 .preloader {
     position: fixed;
     left: 0;
