@@ -1,7 +1,7 @@
 import gsap from 'gsap';
 
 import { Component } from './Component.js';
-import { assetSize } from '../utils/settings.js';
+import { assetHeight, assetWidth } from '../utils/settings.js';
 import { data } from '../utils/data.js';
 import { html } from '../utils/html.js';
 
@@ -63,10 +63,10 @@ export class Figure extends Component {
             `);
         } else if (image) {
             const asset = data.get('assets').find(doc => doc._id === image.asset._ref);
-            const dimensions = asset.metadata.dimensions.aspectRatio > 1 ? `h=${assetSize}` : `w=${assetSize}`;
+            const dimensions = asset.metadata.dimensions.aspectRatio > 1 ? `h=${assetHeight}` : `w=${assetWidth}`;
             const src = `${asset.url}?${dimensions}&fit=min&auto=format`;
-            const width = asset.metadata.dimensions.aspectRatio > 1 ? Math.round(assetSize * asset.metadata.dimensions.aspectRatio) : assetSize;
-            const height = asset.metadata.dimensions.aspectRatio > 1 ? assetSize : Math.round(assetSize / asset.metadata.dimensions.aspectRatio);
+            const width = asset.metadata.dimensions.aspectRatio > 1 ? Math.round(assetHeight * asset.metadata.dimensions.aspectRatio) : assetWidth;
+            const height = asset.metadata.dimensions.aspectRatio > 1 ? assetHeight : Math.round(assetWidth / asset.metadata.dimensions.aspectRatio);
 
             this.nodeList = html(/* html */ `
                 <figure class="${indent ? 'indent ' : ''}lazy${this.parallax ? ' parallax' : ''}">
@@ -79,10 +79,10 @@ export class Figure extends Component {
             `);
         } else if (featuredImage) {
             const asset = data.get('assets').find(doc => doc._id === featuredImage.image.asset._ref);
-            const dimensions = asset.metadata.dimensions.aspectRatio > 1 ? `h=${assetSize}` : `w=${assetSize}`;
+            const dimensions = asset.metadata.dimensions.aspectRatio > 1 ? `h=${assetHeight}` : `w=${assetWidth}`;
             const src = `${asset.url}?${dimensions}&fit=min&auto=format`;
-            const width = asset.metadata.dimensions.aspectRatio > 1 ? Math.round(assetSize * asset.metadata.dimensions.aspectRatio) : assetSize;
-            const height = asset.metadata.dimensions.aspectRatio > 1 ? assetSize : Math.round(assetSize / asset.metadata.dimensions.aspectRatio);
+            const width = asset.metadata.dimensions.aspectRatio > 1 ? Math.round(assetHeight * asset.metadata.dimensions.aspectRatio) : assetWidth;
+            const height = asset.metadata.dimensions.aspectRatio > 1 ? assetHeight : Math.round(assetWidth / asset.metadata.dimensions.aspectRatio);
 
             this.nodeList = html(/* html */ `
                 <figure class="lazy${this.parallax ? ' parallax' : ''}">
