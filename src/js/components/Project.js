@@ -33,7 +33,7 @@ export class Project extends Component {
         const image = (thumbnailImage || featuredImage).image;
         const asset = data.get('assets').find(doc => doc._id === image.asset._ref);
         const dimensions = asset.metadata.dimensions.aspectRatio > 1 ? `h=${assetHeight}` : `w=${assetWidth}`;
-        const src = `${asset.url}?${dimensions}&fit=min&auto=format`;
+        const src = `${asset.url}?${dimensions}&fit=min&fm=webp`;
         const width = asset.metadata.dimensions.aspectRatio > 1 ? Math.round(assetHeight * asset.metadata.dimensions.aspectRatio) : assetWidth;
         const height = asset.metadata.dimensions.aspectRatio > 1 ? assetHeight : Math.round(assetWidth / asset.metadata.dimensions.aspectRatio);
 
