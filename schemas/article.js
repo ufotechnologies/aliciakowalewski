@@ -41,7 +41,7 @@ export default {
       title: 'Thumbnail Image',
       fields: [
         {name: 'image', type: 'image', title: 'Image'},
-        {name: 'size', type: 'boolean', title: 'Contain', initialValue: false}
+        {name: 'contain', type: 'boolean', title: 'Contain', initialValue: false}
       ]
     },
     {
