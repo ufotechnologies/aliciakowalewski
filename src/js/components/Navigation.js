@@ -27,7 +27,7 @@ export class Navigation extends Component {
                     <img class="logo" src="${basePath}/assets/images/logo.png" alt="Alicia Kowalewski">
                     <span>${data.get('title')}</span>
                 </a>
-                <a href="${basePath}/about">About</a>
+                <a href="${basePath}/about">Info</a>
             </nav>
         `);
     }

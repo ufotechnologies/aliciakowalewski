@@ -1,22 +1,4 @@
 @font-face {
-    font-family: 'Source Sans Pro';
-    src: url('../fonts/SourceSansPro-Bold.woff2') format('woff2');
-    font-weight: 700;
-}
-
-@font-face {
-    font-family: 'Source Sans Pro';
-    src: url('../fonts/SourceSansPro-SemiBold.woff2') format('woff2');
-    font-weight: 600;
-}
-
-@font-face {
-    font-family: 'Source Sans Pro';
-    src: url('../fonts/SourceSansPro-Regular.woff2') format('woff2');
-    font-weight: 400;
-}
-
-@font-face {
     font-family: 'IvyOra Display';
     src: url('../fonts/IvyOraDisplay-Bold.woff2') format('woff2');
     font-weight: 700;
@@ -37,9 +19,9 @@
 :root {
     --bg-color: #590232;
     --page-color: #ffffff;
-    --accent-color: #f20587;
-    --ui-font-family: 'Source Sans Pro', sans-serif;
-    --ui-color: #000;
+    --accent-color: #ff3366;
+    --body-font-family: 'IvyOra Display';
+    --body-color: #000;
 }
 
 *, :before, :after {
@@ -69,11 +51,11 @@ html {
 }
 
 body {
-    font-family: var(--ui-font-family);
+    font-family: var(--body-font-family);
     font-weight: 400;
     font-size: 14px;
     line-height: 1.5;
-    color: var(--ui-color);
+    color: var(--body-color);
     -webkit-text-size-adjust: none;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -81,11 +63,11 @@ body {
 }
 
 a {
-    color: var(--ui-color);
+    color: var(--body-color);
     text-decoration: none;
 
     &:hover, &:focus, &:active {
-        color: var(--ui-color);
+        color: var(--body-color);
     }
 }
 
@@ -170,7 +152,7 @@ strong, .active {
 
 ::selection {
     background-color: var(--accent-color);
-    color: var(--ui-color);
+    color: var(--body-color);
 }
 
 // https://stackoverflow.com/questions/5697067/css-for-grabbing-cursors-drag-drop/18294634#18294634
@@ -190,17 +172,16 @@ strong, .active {
 }
 
 h1 {
-    font-family: 'IvyOra Display';
-    font-weight: 500;
-    font-size: clamp(48px, 9vw, 132px);
-    line-height: 1.3125em;
-    letter-spacing: -0.01em;
+    font-family: var(--body-font-family);
+    font-weight: 400;
+    font-size: clamp(48px, 12vw, 170px);
+    line-height: 1.1;
 
     span {
         display: inline-block;
         position: relative;
-        bottom: -0.15em;
-        font-weight: 700;
+        bottom: -0.12em;
+        font-weight: 500;
         color: var(--accent-color);
     }
 
@@ -210,11 +191,10 @@ h1 {
 }
 
 h2 {
-    font-family: 'IvyOra Display';
-    font-weight: 500;
+    font-family: var(--body-font-family);
+    font-weight: 400;
     font-size: 20px;
     line-height: 26px;
-    letter-spacing: normal;
 
     @media (orientation: landscape) {
         font-size: clamp(16px, 4vw, 48px);
@@ -225,11 +205,6 @@ h2 {
 
 h3 {
     font-size: clamp(14px, 1.1vw, 32px);
-    font-style: normal;
-
-    @media (orientation: landscape) {
-        margin-left: 2px;
-    }
 }
 
 main {
@@ -239,14 +214,12 @@ nav, footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
-    padding: 0 25px;
-    font-family: var(--ui-font-family);
-    font-weight: 600;
+    height: fit-content;
+    padding: 25px;
+    font-family: var(--body-font-family);
+    font-weight: 500;
     font-size: 14px;
     line-height: 18px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
 
     > * {
         display: flex;
@@ -255,8 +228,7 @@ nav, footer {
     }
 
     @media (orientation: landscape) {
-        height: 130px;
-        padding: 0 50px;
+        padding: 40px 50px;
     }
 }
 
@@ -266,6 +238,11 @@ nav {
     top: 0;
     width: 100%;
     z-index: 1;
+    pointer-events: none;
+
+    a {
+        pointer-events: auto;
+    }
 }
 
 article {
@@ -358,10 +335,10 @@ footer {
 body {
     &.home {
         article {
-            padding-top: 80px;
+            padding-top: 60px;
 
             @media (orientation: landscape) {
-                padding-top: 130px;
+                padding-top: 60px;
             }
         }
 
@@ -370,7 +347,7 @@ body {
                 flex-wrap: wrap;
                 flex-direction: row;
                 gap: 5%;
-                margin: 50px auto 10px;
+                margin: 40px auto 10px;
 
                 figure {
                     margin: 0;
@@ -384,7 +361,7 @@ body {
                 }
 
                 @media (orientation: landscape) {
-                    margin: 85px auto 5px;
+                    margin: 65px auto 5px;
 
                     figure {
                         width: 21.2%;
@@ -425,7 +402,7 @@ body {
 
             @media (orientation: landscape) {
                 h1 {
-                    width: 70%;
+                    width: 75%;
                 }
             }
         }
@@ -454,11 +431,10 @@ body {
             margin-bottom: 80px;
 
             h1 {
-                font-family: 'IvyOra Display';
+                font-family: var(--body-font-family);
                 font-weight: 700;
                 font-size: 20px;
                 line-height: 26px;
-                letter-spacing: -0.01em;
 
                 span {
                     display: block;
@@ -468,8 +444,7 @@ body {
             }
 
             div {
-                font-family: 'IvyOra Display';
-                font-weight: 400;
+                font-family: var(--body-font-family);
                 font-size: 20px;
                 line-height: 26px;
             }
