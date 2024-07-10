@@ -87,10 +87,6 @@ export class Figure extends Component {
             this.nodeList = html(/* html */ `
                 <figure class="lazy${this.parallax ? ' parallax' : ''}">
                     <img src="${src}" width="${width}" height="${height}" fetchpriority="high">
-                    <figcaption>
-                        ${featuredImage.label ? /* html */ `<div><strong>${featuredImage.label}</strong></div>` : ''}
-                        ${featuredImage.caption ? /* html */ `<div>${featuredImage.caption}</div>` : ''}
-                    </figcaption>
                 </figure>
             `);
         } else {
