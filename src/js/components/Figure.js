@@ -49,12 +49,24 @@ export class Figure extends Component {
     }
 
     render() {
-        const { indent, image, featuredImage, label, caption, mp4 } = this.sectionData;
+        const { indent, image, featuredImage, label, caption, mp4, mp4Link } = this.sectionData;
 
-        if (mp4) {
+        if (mp4Link) {
             this.nodeList = html(/* html */ `
-                <figure class="${indent ? 'indent ' : ''}lazy${this.parallax ? ' parallax' : ''}">
-                    <video autoplay muted loop playsinline src="${mp4}"></video>
+                <figure class="${indent ? 'indent ' : ''}lazy">
+                    <video autoplay muted loop playsinline src="${mp4Link}"></video>
+                    <figcaption>
+                        ${label ? /* html */ `<div><strong>${label}</strong></div>` : ''}
+                        ${caption ? /* html */ `<div>${caption}</div>` : ''}
+                    </figcaption>
+                </figure>
+            `);
+        } else if (mp4) {
+            const asset = data.get('files').find(doc => doc._id === mp4.asset._ref);
+
+            this.nodeList = html(/* html */ `
+                <figure class="${indent ? 'indent ' : ''}lazy">
+                    <video autoplay muted loop playsinline src="${asset.url}"></video>
                     <figcaption>
                         ${label ? /* html */ `<div><strong>${label}</strong></div>` : ''}
                         ${caption ? /* html */ `<div>${caption}</div>` : ''}
@@ -62,14 +74,14 @@ export class Figure extends Component {
                 </figure>
             `);
         } else if (image) {
-            const asset = data.get('assets').find(doc => doc._id === image.asset._ref);
+            const asset = data.get('images').find(doc => doc._id === image.asset._ref);
             const dimensions = asset.metadata.dimensions.aspectRatio > 1 ? `h=${assetHeight}` : `w=${assetWidth}`;
             const src = `${asset.url}?${dimensions}&fit=min&fm=webp`;
             const width = asset.metadata.dimensions.aspectRatio > 1 ? Math.round(assetHeight * asset.metadata.dimensions.aspectRatio) : assetWidth;
             const height = asset.metadata.dimensions.aspectRatio > 1 ? assetHeight : Math.round(assetWidth / asset.metadata.dimensions.aspectRatio);
 
             this.nodeList = html(/* html */ `
-                <figure class="${indent ? 'indent ' : ''}lazy${this.parallax ? ' parallax' : ''}">
+                <figure class="${indent ? 'indent ' : ''}lazy">
                     <img src="${src}" width="${width}" height="${height}"${this.parallax ? ' fetchpriority="high"' : ''}>
                     <figcaption>
                         ${label ? /* html */ `<div><strong>${label}</strong></div>` : ''}
@@ -78,7 +90,7 @@ export class Figure extends Component {
                 </figure>
             `);
         } else if (featuredImage) {
-            const asset = data.get('assets').find(doc => doc._id === featuredImage.image.asset._ref);
+            const asset = data.get('images').find(doc => doc._id === featuredImage.image.asset._ref);
             const dimensions = asset.metadata.dimensions.aspectRatio > 1 ? `h=${assetHeight}` : `w=${assetWidth}`;
             const src = `${asset.url}?${dimensions}&fit=min&fm=webp`;
             const width = asset.metadata.dimensions.aspectRatio > 1 ? Math.round(assetHeight * asset.metadata.dimensions.aspectRatio) : assetWidth;
@@ -91,7 +103,7 @@ export class Figure extends Component {
             `);
         } else {
             this.nodeList = html(/* html */ `
-                <figure class="lazy${this.parallax ? ' parallax' : ''}">
+                <figure class="lazy">
                 </figure>
             `);
         }

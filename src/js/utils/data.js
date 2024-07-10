@@ -8,7 +8,8 @@ export async function loadData() {
         let home;
         let about;
         const articles = [];
-        const assets = [];
+        const images = [];
+        const files = [];
 
         query.result.forEach(doc => {
             if (doc._type === 'settings') {
@@ -34,20 +35,26 @@ export async function loadData() {
             }
 
             if (doc._type === 'sanity.imageAsset') {
-                assets.push(doc);
+                images.push(doc);
+                return;
+            }
+
+            if (doc._type === 'sanity.fileAsset') {
+                files.push(doc);
                 return;
             }
         });
 
         data.set('title', settings.title);
         data.set('description', settings.description);
-        data.set('shareImage', assets.find(doc => doc._id === settings.shareImage?.asset._ref)?.url);
+        data.set('shareImage', images.find(doc => doc._id === settings.shareImage?.asset._ref)?.url);
         data.set('settings', settings);
         data.set('home', home);
         data.set('projects', home.sections.filter(data => data._type === 'project').map(data => articles.find(doc => doc._id === data._ref)));
         data.set('about', about);
         data.set('articles', articles);
-        data.set('assets', assets);
+        data.set('images', images);
+        data.set('files', files);
     }
 
     return data;

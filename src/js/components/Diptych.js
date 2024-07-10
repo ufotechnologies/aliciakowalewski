@@ -37,7 +37,7 @@ export class Diptych extends Component {
         this.nodeList = html(/* html */ `
             <figure class="diptych${indent ? ' indent' : ''} lazy">
                 ${this.data.map(({ image, label, caption }) => {
-                    const asset = data.get('assets').find(doc => doc._id === image.asset._ref);
+                    const asset = data.get('images').find(doc => doc._id === image.asset._ref);
                     const dimensions = asset.metadata.dimensions.aspectRatio > 1 ? `h=${assetHeight}` : `w=${assetWidth}`;
                     const src = `${asset.url}?${dimensions}&fit=min&fm=webp`;
                     const width = asset.metadata.dimensions.aspectRatio > 1 ? Math.round(assetHeight * asset.metadata.dimensions.aspectRatio) : assetWidth;
