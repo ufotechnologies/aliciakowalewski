@@ -20,6 +20,7 @@
     --bg-color: #590232;
     --page-color: #ffffff;
     --accent-color: #ff3366;
+    --figure-bg-color: #e3e3e3;
     --body-font-family: 'IvyOra Display';
     --body-color: #000;
 }
@@ -358,6 +359,7 @@ body {
                     padding: 0;
                     width: 47.5%;
                     margin-bottom: 5%;
+                    background-color: var(--figure-bg-color);
 
                     img {
                         aspect-ratio: 1;
