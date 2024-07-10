@@ -29,6 +29,7 @@ export class Project extends Component {
     render() {
         const { slug, thumbnailImage, featuredImage } = this.sectionData;
 
+        const contain = thumbnailImage && thumbnailImage.contain;
         const image = (thumbnailImage || featuredImage).image;
         const asset = data.get('assets').find(doc => doc._id === image.asset._ref);
         const dimensions = asset.metadata.dimensions.aspectRatio > 1 ? `h=${assetHeight}` : `w=${assetWidth}`;
@@ -38,7 +39,9 @@ export class Project extends Component {
 
         this.nodeList = html(/* html */ `
             <figure>
-                <a href="${basePath}/projects/${slug.current}"><img src="${src}" width="${width}" height="${height}"></a>
+                <a href="${basePath}/projects/${slug.current}">
+                    <img src="${src}" width="${width}" height="${height}" class="${contain ? 'contain' : ''}">
+                </a>
             </figure>
         `);
     }

@@ -287,6 +287,10 @@ figure {
 
     img, video {
         object-fit: cover;
+
+        &.contain {
+            object-fit: contain;
+        }
     }
 
     figcaption {
