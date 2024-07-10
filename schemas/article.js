@@ -40,7 +40,19 @@ export default {
       type: 'object',
       title: 'Thumbnail Image',
       fields: [
-        {name: 'image', type: 'image', title: 'Image'}
+        {name: 'image', type: 'image', title: 'Image'},
+        {
+          name: 'size',
+          type: 'string',
+          title: 'Crop Size',
+          options: {
+            list: [
+              {title: 'Cover', value: 'cover'},
+              {title: 'Contain', value: 'contain'}
+            ],
+            layout: 'dropdown'
+          }
+        }
       ]
     },
     {
