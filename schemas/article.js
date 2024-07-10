@@ -95,7 +95,8 @@ export default {
             {name: 'image', type: 'image', title: 'Image'},
             {name: 'label', type: 'string', title: 'Label'},
             {name: 'caption', type: 'string', title: 'Caption'},
-            {name: 'mp4', type: 'string', title: 'MP4 link'},
+            {name: 'mp4', type: 'file', title: 'MP4'},
+            {name: 'mp4Link', type: 'string', title: 'MP4 link'},
             {name: 'link', type: 'string', title: 'Link'}
           ],
           preview: {
@@ -174,7 +175,8 @@ export default {
                     {name: 'image', type: 'image', title: 'Image'},
                     {name: 'label', type: 'string', title: 'Label'},
                     {name: 'caption', type: 'string', title: 'Caption'},
-                    {name: 'mp4', type: 'string', title: 'MP4 link'},
+                    {name: 'mp4', type: 'file', title: 'MP4'},
+                    {name: 'mp4Link', type: 'string', title: 'MP4 link'},
                     {name: 'link', type: 'string', title: 'Link'}
                   ],
                   preview: {
