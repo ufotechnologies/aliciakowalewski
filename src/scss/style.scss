@@ -466,8 +466,8 @@ body {
 
             > figcaption {
                 position: absolute;
-                top: -44px;
-                right: 0;
+                top: -19px;
+                right: 25px;
             }
 
             &.slider {
@@ -525,6 +525,11 @@ body {
                     font-size: 24px;
                     line-height: 31px;
                     width: 75%;
+                }
+
+                > figcaption {
+                    top: -44px;
+                    right: 0;
                 }
 
                 &.slider {
