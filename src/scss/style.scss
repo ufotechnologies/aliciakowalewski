@@ -376,6 +376,13 @@ body {
                 }
             }
         }
+
+        footer {
+            a:first-of-type, a:last-of-type {
+                visibility: hidden;
+                pointer-events: none;
+            }
+        }
     }
 
     &.about {
