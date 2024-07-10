@@ -253,6 +253,7 @@ article {
 }
 
 section {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 32px;
@@ -461,6 +462,12 @@ body {
                 font-family: var(--body-font-family);
                 font-size: 20px;
                 line-height: 26px;
+            }
+
+            > figcaption {
+                position: absolute;
+                top: -44px;
+                right: 0;
             }
 
             &.slider {
