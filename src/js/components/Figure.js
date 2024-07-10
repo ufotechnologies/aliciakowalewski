@@ -49,24 +49,24 @@ export class Figure extends Component {
     }
 
     render() {
-        const { indent, image, featuredImage, label, caption, mp4, mp4Link } = this.sectionData;
+        const { indent, image, featuredImage, label, caption, mp4 } = this.sectionData;
 
-        if (mp4Link) {
+        if (mp4?.link) {
             this.nodeList = html(/* html */ `
                 <figure class="${indent ? 'indent ' : ''}lazy">
-                    <video autoplay muted loop playsinline src="${mp4Link}"></video>
+                    <video autoplay muted loop playsinline src="${mp4.link}" width="${mp4.width}" height="${mp4.height}"></video>
                     <figcaption>
                         ${label ? /* html */ `<div><strong>${label}</strong></div>` : ''}
                         ${caption ? /* html */ `<div>${caption}</div>` : ''}
                     </figcaption>
                 </figure>
             `);
-        } else if (mp4) {
-            const asset = data.get('files').find(doc => doc._id === mp4.asset._ref);
+        } else if (mp4?.video) {
+            const asset = data.get('files').find(doc => doc._id === mp4.video.asset._ref);
 
             this.nodeList = html(/* html */ `
                 <figure class="${indent ? 'indent ' : ''}lazy">
-                    <video autoplay muted loop playsinline src="${asset.url}"></video>
+                    <video autoplay muted loop playsinline src="${asset.url}" width="${mp4.width}" height="${mp4.height}"></video>
                     <figcaption>
                         ${label ? /* html */ `<div><strong>${label}</strong></div>` : ''}
                         ${caption ? /* html */ `<div>${caption}</div>` : ''}
