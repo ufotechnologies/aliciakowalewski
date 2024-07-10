@@ -291,6 +291,7 @@ figure {
 
         &.contain {
             object-fit: contain;
+            transform: scale(0.8);
         }
     }
 
