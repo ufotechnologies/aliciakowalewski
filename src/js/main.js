@@ -17,11 +17,11 @@ router.init({
     transition: new Transition()
 });
 
-const assets = [];
-document.querySelectorAll('.lazy').forEach(el => assets.push(lazyLoad(el)));
+const parallaxAssets = [];
+document.querySelectorAll('.parallax').forEach(el => parallaxAssets.push(lazyLoad(el)));
 
-/* await Promise.all([
+await Promise.all([
     document.fonts.ready, // Preload fonts
-    ...assets
-]); */
+    ...parallaxAssets
+]);
 document.documentElement.classList.add('is-loaded');
