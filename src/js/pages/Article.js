@@ -5,7 +5,7 @@ import { SectionProject } from '../components/SectionProject.js';
 import { Footer } from '../components/Footer.js';
 import { basePath } from '../utils/settings.js';
 import { data } from '../utils/data.js';
-import { observe } from '../utils/observer.js';
+// import { observe } from '../utils/observer.js';
 
 export class Article extends Page {
     constructor() {
@@ -60,6 +60,6 @@ export class Article extends Page {
         this.article.append(footer.el);
         this.sections.push(footer);
 
-        this.sections.forEach(section => observe(section.el, section));
+        // this.sections.forEach(section => observe(section.el, section));
     }
 }
