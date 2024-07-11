@@ -25,3 +25,4 @@ await Promise.all([
     ...parallaxAssets
 ]);
 document.documentElement.classList.add('is-loaded');
+window.dispatchEvent(new Event('resize'));

@@ -16,7 +16,7 @@ export class Page extends Component {
 
         this.smooth = new Smooth({
             root: document.querySelector('.page'),
-            container: this.article,
+            container: this.el,
             // lerpSpeed: 0.075
         });
     }
@@ -77,6 +77,7 @@ export class Page extends Component {
     // Public methods
 
     animateIn = () => {
+        this.smooth.enable();
     };
 
     animateOut = () => {
@@ -94,7 +95,7 @@ export class Page extends Component {
         this.smooth.disable();
 
         for (let i = 0, l = this.sections.length; i < l; i++) {
-            if (this.sections[i] && this.sections[i].destroy) {
+            if (this.sections[i] && this.sections[i].disable) {
                 this.sections[i].disable();
             }
         }
