@@ -4,7 +4,7 @@ import { HomeHeading } from '../components/HomeHeading.js';
 import { HomeProjects } from '../components/HomeProjects.js';
 import { Footer } from '../components/Footer.js';
 import { data } from '../utils/data.js';
-import { observe } from '../utils/observer.js';
+// import { observe } from '../utils/observer.js';
 
 export class Home extends Page {
     constructor() {
@@ -38,7 +38,7 @@ export class Home extends Page {
         this.article.append(footer.el);
         this.sections.push(footer);
 
-        this.sections.forEach(section => observe(section.el, section));
+        // this.sections.forEach(section => observe(section.el, section));
     }
 
     appendSections() {
