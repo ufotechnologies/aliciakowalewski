@@ -16,7 +16,7 @@ export class Page extends Component {
 
         this.smooth = new Smooth({
             root: document.querySelector('.page'),
-            container: this.article,
+            container: this.el,
             // lerpSpeed: 0.075
         });
     }
