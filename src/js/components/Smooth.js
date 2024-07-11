@@ -36,8 +36,6 @@ export class Smooth extends Component {
             });
 
             gsap.set(this.container, { willChange: 'transform' });
-
-            this.enable();
         }
     }
 
@@ -54,8 +52,8 @@ export class Smooth extends Component {
     // Event handlers
 
     onResize = () => {
-        // defer by 200ms
-        gsap.delayedCall(0.2, () => {
+        // defer
+        gsap.delayedCall(0, () => {
             const { height } = this.container.getBoundingClientRect();
 
             gsap.set(document.body, { height });
