@@ -24,5 +24,5 @@ await Promise.all([
     document.fonts.ready, // Preload fonts
     ...parallaxAssets
 ]);
-document.documentElement.classList.add('is-loaded');
 window.dispatchEvent(new Event('resize'));
+document.documentElement.classList.add('is-loaded');
