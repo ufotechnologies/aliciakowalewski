@@ -26,11 +26,11 @@ export class Router {
 
         this.lastPage = page;
 
-        this.transition.animateOut(() => {
-            if (page.animateIn) {
-                page.animateIn();
-            }
+        if (page.animateIn) {
+            page.animateIn();
+        }
 
+        this.transition.animateOut(() => {
             this.isTransitioning = false;
         });
     }

@@ -269,7 +269,7 @@ section {
     @media (orientation: landscape) {
         gap: 32px;
         margin: 50px auto;
-        padding: 0 50px;
+        padding: 0;
     }
 }
 
@@ -323,6 +323,7 @@ figure {
 
         &.indent {
             width: 80%;
+            padding: 0;
         }
     }
 }
@@ -350,6 +351,8 @@ body {
         }
 
         section {
+            padding: 0 25px;
+
             &.projects {
                 flex-wrap: wrap;
                 flex-direction: row;
@@ -367,8 +370,12 @@ body {
                         aspect-ratio: 1;
                     }
                 }
+            }
 
-                @media (orientation: landscape) {
+            @media (orientation: landscape) {
+                padding: 0 50px;
+
+                &.projects {
                     margin: 65px auto 5px;
 
                     figure {
@@ -443,7 +450,7 @@ body {
         }
 
         section {
-            margin-bottom: 80px;
+            margin: 50px auto 80px;
 
             h1 {
                 font-family: var(--body-font-family);
@@ -466,7 +473,7 @@ body {
 
             > figcaption {
                 position: absolute;
-                top: -19px;
+                top: -44px;
                 right: 25px;
             }
 
@@ -475,21 +482,11 @@ body {
                 padding: 0 25px;
 
                 .slider-wrapper {
-                    position: relative;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    width: 100%;
-                    height: 100%;
-                    aspect-ratio: 2;
+                    width: 80vw;
 
                     .slider-container {
-                        position: absolute;
                         display: flex;
-                        gap: 25px;
                         width: calc(100vw - 25px);
-                        height: fit-content;
-                        padding-right: 25px;
                         overflow-y: hidden;
                         overflow-x: auto;
                         scrollbar-width: none;
@@ -500,9 +497,8 @@ body {
 
                         figure {
                             flex-shrink: 0;
-                            width: calc(100% - 100px);
-                            height: fit-content;
-                            margin: 0;
+                            width: 80vw;
+                            margin: 0 6px 0 0;
                             padding: 0;
                             pointer-events: none;
                         }
@@ -513,7 +509,7 @@ body {
             @media (orientation: landscape) {
                 flex-direction: row;
                 width: 82%;
-                margin-bottom: 130px;
+                margin: 80px auto 130px;
 
                 h1 {
                     font-size: 24px;
@@ -528,20 +524,22 @@ body {
                 }
 
                 > figcaption {
-                    top: -44px;
+                    top: -74px;
                     right: 0;
                 }
 
                 &.slider {
                     width: 80%;
                     margin: 50px auto;
+                    padding: 0;
 
                     .slider-wrapper {
-                        aspect-ratio: 1.45;
-
                         .slider-container {
                             width: 90vw;
-                            padding-right: 100px;
+
+                            figure {
+                                margin: 0 25px 0 0;
+                            }
                         }
                     }
                 }

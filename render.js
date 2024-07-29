@@ -29,7 +29,7 @@ routes.result.forEach(page => {
     <meta name="twitter:site" content="@aliciakowalews1">
     <meta name="twitter:creator" content="@aliciakowalews1">
 
-    <link rel="prefetch" href="https://53goq129.api.sanity.io/v2024-07-10/data/query/production?query=*">
+    <link rel="prefetch" href="https://53goq129.api.sanity.io/v2024-07-29/data/query/production?query=*">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap">
