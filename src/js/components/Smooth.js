@@ -52,8 +52,8 @@ export class Smooth extends Component {
     // Event handlers
 
     onResize = () => {
-        // defer by 200ms
-        gsap.delayedCall(0.2, () => {
+        // defer by 300ms
+        gsap.delayedCall(0.3, () => {
             const { height } = this.container.getBoundingClientRect();
 
             gsap.set(document.body, { height });
