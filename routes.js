@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { cwd } from 'process';
+
 import { linkResolver } from './src/js/utils/linkResolver.js';
 
 const excerptLength = 300;
@@ -55,7 +56,7 @@ const build = async () => {
             description: description ? encodeHTMLEntities(description.replace(/\n/g, ' ').trim()) : settings.description,
             favicon: `${settings.favicon}?w=512&h=512&fit=crop&crop=center`,
             shareImage: `${shareImage ? shareImage : settings.shareImage}?w=1200&h=630&fit=crop&crop=center`,
-            fullPath: linkResolver('', doc)
+            fullPath: linkResolver(doc)
         };
     });
 

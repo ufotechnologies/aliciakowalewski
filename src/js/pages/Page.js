@@ -5,6 +5,7 @@ import { Diptych } from '../components/Diptych.js';
 import { Slider } from '../components/Slider.js';
 import { Project } from '../components/Project.js';
 import { Smooth } from '../components/Smooth.js';
+
 import { html } from '../utils/html.js';
 
 export class Page extends Component {

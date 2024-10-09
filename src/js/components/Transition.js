@@ -2,6 +2,7 @@ import gsap from 'gsap';
 import { Vector2 } from '@alienkitty/space.js';
 
 import { Component } from './Component.js';
+
 import { html } from '../utils/html.js';
 
 export class Transition extends Component {

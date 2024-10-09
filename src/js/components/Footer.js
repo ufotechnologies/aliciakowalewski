@@ -1,4 +1,5 @@
 import { Component } from './Component.js';
+
 import { basePath } from '../utils/settings.js';
 import { router } from '../utils/router.js';
 import { html } from '../utils/html.js';

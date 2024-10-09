@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { cwd } from 'process';
+
 import routes from './routes.json' with { type: 'json' };
 import { basePath } from './src/js/utils/settings.js';
 

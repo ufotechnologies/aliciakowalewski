@@ -2,6 +2,7 @@ import { Home } from './pages/Home.js';
 import { About } from './pages/About.js';
 import { Article } from './pages/Article.js';
 import { Transition } from './components/Transition.js';
+
 import { basePath } from './utils/settings.js';
 import { router } from './utils/router.js';
 import { loadData } from './utils/data.js';

@@ -1,5 +1,6 @@
 import { Component } from './Component.js';
 import { Figure } from '../components/Figure.js';
+
 import { html } from '../utils/html.js';
 
 export class Slider extends Component {
