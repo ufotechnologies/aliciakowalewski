@@ -3,6 +3,7 @@ import { Navigation } from '../components/Navigation.js';
 import { Figure } from '../components/Figure.js';
 import { SectionProject } from '../components/SectionProject.js';
 import { Footer } from '../components/Footer.js';
+
 import { basePath } from '../utils/settings.js';
 import { data } from '../utils/data.js';
 // import { observe } from '../utils/observer.js';

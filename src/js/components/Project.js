@@ -1,4 +1,5 @@
 import { Component } from './Component.js';
+
 import { basePath } from '../utils/settings.js';
 import { router } from '../utils/router.js';
 import { data } from '../utils/data.js';
@@ -62,6 +63,7 @@ export class Project extends Component {
         e.preventDefault();
 
         const path = e.currentTarget.getAttribute('href');
+
         router.setPath(path);
     };
 

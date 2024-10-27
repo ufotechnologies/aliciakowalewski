@@ -5,6 +5,7 @@ import { Diptych } from '../components/Diptych.js';
 import { Slider } from '../components/Slider.js';
 import { Project } from '../components/Project.js';
 import { Smooth } from '../components/Smooth.js';
+
 import { html } from '../utils/html.js';
 
 export class Page extends Component {
@@ -16,8 +17,7 @@ export class Page extends Component {
 
         this.smooth = new Smooth({
             root: document.querySelector('.page'),
-            container: this.article,
-            // lerpSpeed: 0.075
+            container: this.article
         });
     }
 

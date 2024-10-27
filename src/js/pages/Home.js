@@ -3,6 +3,7 @@ import { Navigation } from '../components/Navigation.js';
 import { HomeHeading } from '../components/HomeHeading.js';
 import { HomeProjects } from '../components/HomeProjects.js';
 import { Footer } from '../components/Footer.js';
+
 import { data } from '../utils/data.js';
 // import { observe } from '../utils/observer.js';
 

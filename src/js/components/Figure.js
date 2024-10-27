@@ -1,6 +1,7 @@
 import gsap from 'gsap';
 
 import { Component } from './Component.js';
+
 import { assetHeight, assetWidth } from '../utils/settings.js';
 import { data } from '../utils/data.js';
 import { html } from '../utils/html.js';

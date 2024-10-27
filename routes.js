@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { cwd } from 'process';
+
 import { linkResolver } from './src/js/utils/linkResolver.js';
 
 const excerptLength = 300;
@@ -9,7 +10,7 @@ const excerptLength = 300;
 const encodeHTMLEntities = s => s.replace(/[\u00A0-\u9999<>\&]/g, i => `&#${i.charCodeAt(0)};`);
 
 const build = async () => {
-    const query = await (await fetch('https://53goq129.api.sanity.io/v2024-08-29/data/query/production?query=*')).json();
+    const query = await (await fetch('https://53goq129.api.sanity.io/v2024-10-27/data/query/production?query=*')).json();
 
     const index = query.result.findIndex(({ _type }) => _type === 'settings');
     let settings = query.result.splice(index, 1)[0];
@@ -55,7 +56,7 @@ const build = async () => {
             description: description ? encodeHTMLEntities(description.replace(/\n/g, ' ').trim()) : settings.description,
             favicon: `${settings.favicon}?w=512&h=512&fit=crop&crop=center`,
             shareImage: `${shareImage ? shareImage : settings.shareImage}?w=1200&h=630&fit=crop&crop=center`,
-            fullPath: linkResolver('', doc)
+            fullPath: linkResolver(doc)
         };
     });
 

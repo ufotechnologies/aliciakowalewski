@@ -1,4 +1,5 @@
 import { Component } from './Component.js';
+
 import { html } from '../utils/html.js';
 
 export class HomeHeading extends Component {

@@ -1,4 +1,6 @@
-export const linkResolver = (basePath, doc) => {
+import { basePath } from './settings.js';
+
+export const linkResolver = doc => {
     if (doc._type === 'page' && doc.name !== 'Home') {
         return `${basePath}/${doc.slug.current}`;
     }
